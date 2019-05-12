@@ -51,7 +51,8 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "serve-favicon": "^2.5.0",
-    "swagger-ui-express": "^4.0.2"
+    "swagger-ui-express": "^4.0.2",
+    "typescript": "^3.4.5"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -75,7 +76,6 @@
     "jest": "^24.8.0",
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
-    "tsc-watch": "^2.1.2",
-    "typescript": "^3.4.5"
+    "tsc-watch": "^2.1.2"
   }
 }
