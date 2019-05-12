@@ -13,7 +13,8 @@
     "dev": "tsc-watch --onSuccess \"node ./dist/app.js\"",
     "test": "jest --coverage --verbose",
     "prod": "yarn run build && yarn run start",
-    "start": "cross-env NODE_ENV=production node ./dist/app.js"
+		"start": "cross-env NODE_ENV=production node ./dist/app.js",
+		"start:cluster": "npx pm2 start pm2.yaml"
   },
   "jest": {
 		"verbose": true,
