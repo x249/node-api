@@ -40,6 +40,7 @@
     "@types/node-emoji": "^1.8.1",
     "@types/serve-favicon": "^2.2.30",
     "cross-env": "^5.2.0",
+    "tsc-watch": "^2.1.2",
     "typescript": "^3.4.5"
   }
 }
