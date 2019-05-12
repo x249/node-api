@@ -1,3 +1,7 @@
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/x249/node-api/dev/typescript.svg)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/x249/node-api/express.svg?style=flat-square)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/x249/node-api/mongoose.svg?style=flat-square)
+
 # Nodejs API
 
 > Backend API using TypeScript, Express and MongoDB. Used for Rapid Prototyping and MVPs
