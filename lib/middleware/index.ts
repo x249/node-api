@@ -8,6 +8,8 @@ import {
 	handleJWTAuthorization
 } from "./common";
 
+import { handleAPIDocs } from "./apiDocs";
+
 export default [
 	handleCors,
 	handleCompression,
@@ -15,5 +17,6 @@ export default [
 	handleLogger,
 	handleHelmet,
 	handleRateLimit,
-	handleJWTAuthorization
+	handleJWTAuthorization,
+	handleAPIDocs
 ];

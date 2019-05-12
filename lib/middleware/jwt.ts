@@ -15,7 +15,9 @@ export const jwt = () => {
 			"/",
 			"/api/v1/user/new",
 			"/api/v1/user/authenticate",
-			"/api/v1/version"
+			"/api/v1/version",
+			"/api-docs",
+			"/api-docs/"
 		]
 	});
 };

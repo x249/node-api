@@ -1,0 +1,47 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0"
+	},
+	"host": "localhost:4000",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"paths": {
+		"/": {
+			"get": {
+				"tags": ["API", "test", "status"],
+				"summary": "Test if the API is online or offline",
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"400": {
+						"description": "Bad request"
+					}
+				},
+				"content": {
+					"application/html": {
+						"text": "Node Backend API"
+					}
+				}
+			}
+		},
+		"/api/v1/version": {
+			"get": {
+				"tags": ["API", "version"],
+				"summary": "Prints out the version of the API",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"content": {
+					"application/json": {
+						"message": "API_VERSION"
+					}
+				}
+			}
+		}
+	}
+}
