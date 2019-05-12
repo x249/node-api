@@ -19,6 +19,8 @@
 - [X] Security Headers (Rate limiting, CORS, XSS, CSRF\*)
 - [X] Built with Scalability in mind
 
+(* not yet implemented)
+
 ## Build Setup
 
 ```bash
