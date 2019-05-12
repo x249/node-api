@@ -51,3 +51,6 @@ SECRET # for JWT encoding
 API_VER # current version of the API
 DB_URL # url for the mongo database
 ```
+## License
+
+GNU General Public License v3.0
