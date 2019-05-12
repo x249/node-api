@@ -4,15 +4,20 @@
 
 ## Features
 
-- [ ] RESTful Architecture
-- [ ] Easy-to-read code
-- [ ] Scalable
-- [ ] TypeScript
-- [ ] Express
-- [ ] MongoDB
-- [ ] Authentication & Authorization (JWT and Role based)
-- [ ] Error Handling
-- [ ] Security Headers (Rate limiting, CORS, XSS, CSRF\*)
+- [X] RESTful Architecture
+- [X] Easy-to-read code
+- [X] Scalable
+- [X] TypeScript
+- [X] Express
+- [X] MongoDB
+- [X] Clustering
+- [X] Testing (Unit & Integration)
+- [X] API Documentation (SwaggerUI)
+- [X] Authentication & Authorization (JWT and Role based)
+- [X] Middleware Handler
+- [X] Error Handling
+- [X] Security Headers (Rate limiting, CORS, XSS, CSRF\*)
+- [X] Built with Scalability in mind
 
 ## Build Setup
 
