@@ -28,6 +28,9 @@ $ yarn install
 # serve with hot reload at localhost:4000
 $ yarn dev
 
+# run tests
+$ yarn test
+
 # build for production and launch server
 $ yarn prod
 ```
