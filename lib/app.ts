@@ -1,6 +1,10 @@
 require("dotenv").config();
 import http from "http";
 import express from "express";
+import { applyMiddleware, applyRoutes } from "./utils";
+import middleware from "./middleware";
+import errorHandlers from "./middleware/errorHandler";
+import routes from "./routes";
 import chalk from "chalk";
 import consola from "consola";
 import emoji from "node-emoji";
@@ -25,6 +29,11 @@ process.on("unhandledRejection", error => {
  */
 
 const router = express();
+applyMiddleware(middleware, router);
+applyRoutes(routes, router);
+applyMiddleware(errorHandlers, router);
+router.enable("trust proxy"); // Enables hosting behind proxy (Heroku)
+
 const host =
 	config.env === "production" ? process.env.HOST || "localhost" : "localhost";
 const port = config.env === "production" ? process.env.PORT || 8080 : 4000;
