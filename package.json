@@ -1,0 +1,10 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "Backend API built using TypeScript, Express and MongoDB",
+  "main": "app.js",
+  "repository": "https://github.com/x249/node-api.git",
+  "author": "x249",
+  "license": "MIT",
+  "private": true
+}
