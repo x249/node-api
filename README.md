@@ -21,6 +21,13 @@
 
 (* not yet implemented)
 
+## Requirements
+
+Node >= 11.14.0
+npm >= 6.7.0
+yarn >= 1.15.2
+MongoDB >= 2.6.12
+
 ## Build Setup
 
 ```bash
