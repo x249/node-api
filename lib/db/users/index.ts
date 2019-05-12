@@ -8,7 +8,7 @@ const userSchema = new schema({
 		required: [true, "Username is required"],
 		unique: true,
 		trim: true
-	},,
+	},
 	firstName: {
 		type: String,
 		required: [true, "First name is required"]
