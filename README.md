@@ -47,7 +47,7 @@ $ yarn prod
 ## Enivronment Variables
 
 ```env
-SECRET
-API_VER
-DB_URL
+SECRET # for JWT encoding
+API_VER # current version of the API
+DB_URL # url for the mongo database
 ```
