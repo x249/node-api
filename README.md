@@ -15,7 +15,7 @@
 - [X] TypeScript
 - [X] Express
 - [X] MongoDB
-- [X] Clustering using [PM2](http://pm2.keymetrics.io/)
+- [X] Process Management using [PM2](http://pm2.keymetrics.io/)
 - [X] Unit and Integration testing ready
 - [X] API Documentation using [SwaggerUI](https://swagger.io/tools/swagger-ui/)
 - [X] Authentication and Authorization (JWT and Role based)
