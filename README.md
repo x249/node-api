@@ -11,18 +11,17 @@
 
 - [X] RESTful Architecture
 - [X] Easy-to-read code
-- [X] Scalable
+- [X] Built with Scalability in mind
 - [X] TypeScript
 - [X] Express
 - [X] MongoDB
-- [X] Clustering
-- [X] Testing (Unit & Integration)
-- [X] API Documentation (SwaggerUI)
-- [X] Authentication & Authorization (JWT and Role based)
+- [X] Process Management using [PM2](http://pm2.keymetrics.io/)
+- [X] Unit and Integration testing ready
+- [X] API Documentation using [SwaggerUI](https://swagger.io/tools/swagger-ui/)
+- [X] Authentication and Authorization (JWT and Role based)
 - [X] Middleware Handler
 - [X] Error Handling
 - [X] Security Headers (Rate limiting, CORS, XSS, CSRF\*)
-- [X] Built with Scalability in mind
 
 (* not yet implemented)
 
