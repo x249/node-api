@@ -2,13 +2,10 @@
 import express, { Router } from "express";
 import request from "supertest";
 import { applyMiddleware, applyRoutes } from "../utils";
-import promiseRequest from "request-promise";
 import middleware from "../middleware";
 import errorHandlers from "../middleware/errorHandler";
 import routes from "../routes/main";
 
-jest.mock("request-promise");
-(promiseRequest as any).mockImplementation(() => '{"features": []}');
 
 describe("routes", () => {
 	let router: Router;
