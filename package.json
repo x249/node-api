@@ -63,7 +63,7 @@
     "@types/express-jwt": "0.0.42",
     "@types/express-rate-limit": "3.3.0",
     "@types/helmet": "0.0.43",
-    "@types/jest": "24.0.12",
+    "@types/jest": "24.0.13",
     "@types/jsonwebtoken": "8.3.2",
     "@types/mongoose": "5.5.0",
     "@types/morgan": "1.7.35",
