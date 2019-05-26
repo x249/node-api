@@ -68,7 +68,7 @@
     "@types/mongoose": "5.5.0",
     "@types/morgan": "1.7.35",
     "@types/node-emoji": "1.8.1",
-    "@types/request-promise": "4.1.43",
+    "@types/request-promise": "4.1.44",
     "@types/serve-favicon": "2.2.30",
     "@types/supertest": "2.0.7",
     "@types/swagger-ui-express": "3.0.0",
