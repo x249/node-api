@@ -1859,10 +1859,10 @@ express-jwt@5.3.1:
     jsonwebtoken "^8.1.0"
     lodash.set "^4.0.0"
 
-express-rate-limit@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/express-rate-limit/-/express-rate-limit-4.0.2.tgz#89daacfbc3817ea77a4b3410e4126d8e61ac7396"
-  integrity sha512-aTll5BfaKrZkE1C0A0cPMuPownp2d/EfNd3haakZ50lokP6GcjCcvrTonpoJgivj7mJOrJKj6gaBid2+ppXojg==
+express-rate-limit@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/express-rate-limit/-/express-rate-limit-4.0.4.tgz#a495338ae9e58c856b66d1346ec0d86f43ba2e43"
+  integrity sha512-DLRj2vMO7Xgai8qWKU9O6ZztF2bdDmfFNFi9k3G9BPzJ+7MG7eWaaBikbe0eBpNGSxU8JziwW0PQKG78aNWa6g==
 
 express-unless@^0.3.0:
   version "0.3.1"
