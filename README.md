@@ -19,7 +19,7 @@
 - [X] Unit and Integration testing ready
 - [X] API Documentation using [SwaggerUI](https://swagger.io/tools/swagger-ui/)
 - [X] Authentication and Authorization (JWT and Role based)
-- [X] Middleware Handler
+- [X] Middleware Handling
 - [X] Error Handling
 - [X] Security Headers (Rate limiting, CORS, XSS, CSRF\*)
 
