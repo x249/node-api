@@ -11,12 +11,12 @@ import {
 import { handleAPIDocs } from "./apiDocs";
 
 export default [
+	handleAPIDocs,
 	handleCors,
 	handleCompression,
 	handleBodyParsing,
 	handleLogger,
 	handleHelmet,
 	handleRateLimit,
-	handleJWTAuthorization,
-	handleAPIDocs
+	handleJWTAuthorization
 ];
