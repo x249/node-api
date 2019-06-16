@@ -34,11 +34,17 @@ applyRoutes(routes, router);
 applyMiddleware(errorHandlers, router);
 router.enable("trust proxy"); // Enables hosting behind proxy (Heroku)
 
+const env =
+	config.env === "production"
+		? "production"
+		: config.env === "testing"
+		? "testing"
+		: "development";
+
 const host =
-	config.env === "production" ? process.env.HOST || "localhost" : "localhost";
-const port = config.env === "production" ? process.env.PORT || 8080 : 4000;
-const emo =
-	config.env === "production" ? emoji.get("coffee") : emoji.get("gear");
+	env === "production" ? process.env.HOST || "localhost" : "localhost";
+const port = env === "production" ? process.env.PORT || 8080 : 4000;
+const emo = env === "production" ? emoji.get("coffee") : emoji.get("gear");
 
 /*
  **	Server Config
@@ -48,7 +54,7 @@ const server = http.createServer(router);
 
 server.listen(port, () => {
 	console.log("\n-+============================+-\n");
-	consola.info(chalk.blue(`Environment: ${config.env} `) + `${emo}`);
+	consola.info(chalk.blue(`Environment: ${env} `) + `${emo}`);
 	consola.success(
 		chalk.green.bold("Built and working!") + ` ${emoji.get("clap")}`
 	);
