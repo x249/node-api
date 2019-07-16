@@ -70,7 +70,7 @@
     "@types/node-emoji": "1.8.1",
     "@types/request-promise": "4.1.44",
     "@types/serve-favicon": "2.2.30",
-    "@types/supertest": "2.0.7",
+    "@types/supertest": "2.0.8",
     "@types/swagger-ui-express": "3.0.1",
     "cross-env": "5.2.0",
     "jest": "24.8.0",
