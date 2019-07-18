@@ -11,7 +11,7 @@
 
 - [X] RESTful Architecture
 - [X] Easy-to-read code
-- [X] Built with Scalability in mind
+- [X] Built with **Scalability** in mind
 - [X] TypeScript
 - [X] Express
 - [X] MongoDB
