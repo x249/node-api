@@ -1,5 +1,5 @@
 
-# Nodejs API
+# Node API
 
 ![GitHub Release Date](https://img.shields.io/github/release-date/x249/node-api.svg?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/x249/node-api.svg?style=flat-square)
