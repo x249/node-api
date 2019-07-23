@@ -5,7 +5,7 @@
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/x249/node-api.svg?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/x249/node-api.svg)
 
-> Backend API using TypeScript, Express and MongoDB. Used for Rapid Prototyping and MVPs
+> Backend API using the latest technologies and standards. Built to scale
 
 ## Features
 
