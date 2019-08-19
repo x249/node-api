@@ -634,10 +634,10 @@
     "@types/node" "*"
     "@types/tough-cookie" "*"
 
-"@types/serve-favicon@2.2.30":
-  version "2.2.30"
-  resolved "https://registry.yarnpkg.com/@types/serve-favicon/-/serve-favicon-2.2.30.tgz#5bea4ead966a9ad5e0f409141edba0cebf20da73"
-  integrity sha512-6bU8cLUb1qYv0YecMRWKxS4L0+mjPMcQq2ZXtsUe0ij4oALCUIvCvy7rsGqWbOKcNwauh6jiuF4V/vCsObmXkw==
+"@types/serve-favicon@2.2.31":
+  version "2.2.31"
+  resolved "https://registry.yarnpkg.com/@types/serve-favicon/-/serve-favicon-2.2.31.tgz#1e62e3f57036f5ff15017765b012b3d8b4d94aa8"
+  integrity sha512-BfGO//1n649yo2ooH0wDemWLwElgGT1tq6y1l4orwtYXjCNhHJf3LWAe6VBpxq8RGaqiM7AXYAHWIOP52y0gtA==
   dependencies:
     "@types/express" "*"
 
