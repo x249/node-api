@@ -475,10 +475,10 @@
     "@types/express" "*"
     "@types/express-unless" "*"
 
-"@types/express-rate-limit@3.3.1":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@types/express-rate-limit/-/express-rate-limit-3.3.1.tgz#5aed94623fe8963cd56c52fa46e0ea9fe72e2684"
-  integrity sha512-8YHGzyxOmdh8i2xsS3F2pKYm8vRKm1fa3trskz+0Dz1jvyZwrYobp0BV/JmERUUuDn+Li8DhhC3yWE1ju1iQEw==
+"@types/express-rate-limit@3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@types/express-rate-limit/-/express-rate-limit-3.3.2.tgz#a8450b0c7c5895a2df47ef1c9d996090d0ec61e6"
+  integrity sha512-rLBpN/P/R/SlfoZfBYsrXWwfykxcCUyui3T03nzTJNq+aN6hE0wcME1TsfOb0Vv3TjRNraLqpnwxeRnsd3ATDw==
   dependencies:
     "@types/express" "*"
 
