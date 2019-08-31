@@ -72,7 +72,7 @@
     "@types/serve-favicon": "2.2.30",
     "@types/supertest": "2.0.8",
     "@types/swagger-ui-express": "3.0.1",
-    "cross-env": "5.2.0",
+    "cross-env": "5.2.1",
     "jest": "24.8.0",
     "supertest": "4.0.2",
     "ts-jest": "24.0.2",
