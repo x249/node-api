@@ -1,8 +1,7 @@
-import * as db from "../../db/index";
+import { User } from "../../db/index";
 import * as bcrypt from "bcryptjs";
 import { generateToken } from "../../helpers";
 
-const User = db.default.User;
 
 interface newUserParams {
 	username: string;
