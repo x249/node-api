@@ -10,6 +10,6 @@ try {
 	console.log(err);
 }
 
-export default {
+export {
 	User
 };

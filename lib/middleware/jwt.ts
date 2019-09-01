@@ -1,15 +1,14 @@
 import expressJwt from "express-jwt";
 import { Request } from "express";
-import * as db from "../db/index";
+import { User } from "../db/index";
 
-const User = db.default.User;
 
 const secret: any = process.env.SECRET;
 
 export const jwt = () => {
 	return expressJwt({
 		secret,
-		isRevoked: isRevoked
+		isRevoked
 	}).unless({
 		path: [
 			"/",

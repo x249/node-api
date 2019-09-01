@@ -1,8 +1,7 @@
-import * as db from "../../db/index";
+import { User } from "../../db/index";
 import * as bcrypt from "bcryptjs";
 import { generateToken } from "../../helpers";
 
-const User = db.default.User;
 
 interface newUserParams {
 	username: string;
@@ -49,7 +48,7 @@ export const authenticateUser = async (params: authUserParams) => {
 		} else {
 			const authSuccess = await bcrypt.compare(params.password, user.password);
 			if (authSuccess) {
-				const token = generateToken(user._id, user.role, "30d");
+				const token = await generateToken(user._id, user.role, "30d");
 				const { password, ...userWithoutPassword } = user._doc;
 				return {
 					status: 200,
