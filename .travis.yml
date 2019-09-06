@@ -2,7 +2,6 @@ os: linux
 distro: bionic
 language: node_js
 node_js:
-	- lts/*
 	- 11
 	- 10
 services:
