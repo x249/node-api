@@ -32,11 +32,14 @@
 - Node >= 11.14.0
 - NPM >= 6.7.0
 - Yarn >= 1.15.2
-- MongoDB >= 2.6.12
+- Docker-Compose >= 1.24.0
 
 ## Build Setup
 
 ```bash
+# run the bitnami/mongodb docker image on port 27017
+$ docker-compose up -d
+
 # install dependencies
 $ yarn install
 
