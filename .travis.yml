@@ -2,6 +2,8 @@ os: linux
 distro: bionic
 sudo: required
 language: node_js
+notifications:
+  email: false
 node_js:
   - 11
   - 10
@@ -23,7 +25,7 @@ before_install:
   - docker ps
 jobs:
   include:
-  - stage: test
-    script: yarn test
-  - stage: coverage
-    script: yarn test:coverage
+    - stage: test
+      script: yarn test
+    - stage: coverage
+      script: yarn test:coverage
