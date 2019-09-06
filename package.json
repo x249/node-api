@@ -11,7 +11,8 @@
 		"build": "tsc",
 		"postinstall": "yarn run build",
 		"dev": "tsc-watch --onSuccess \"node ./dist/app.js\"",
-		"test": "jest --coverage --verbose",
+		"test": "jest",
+		"test:verbose-coverage": "jest --coverage --verbose",
 		"prod": "yarn run build && yarn run start",
 		"start": "cross-env NODE_ENV=production node ./dist/app.js",
 		"start:cluster": "pm2 start pm2.yaml"
