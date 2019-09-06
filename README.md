@@ -14,7 +14,7 @@
 - [X] Built with **Scalability** in mind
 - [X] TypeScript
 - [X] Express
-- [X] MongoDB
+- [X] MongoDB (Available using docker-compose)
 - [X] Process Management and Clustering using [PM2](http://pm2.keymetrics.io/)
 - [X] Unit and Integration testing ready
 - [X] API Documentation using [SwaggerUI](https://swagger.io/tools/swagger-ui/)
