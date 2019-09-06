@@ -1,6 +1,7 @@
 
 # Node API
 
+[![Build Status](https://travis-ci.org/x249/node-api.svg?branch=master)](https://travis-ci.org/x249/node-api)
 ![GitHub Release Date](https://img.shields.io/github/release-date/x249/node-api.svg?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/x249/node-api.svg?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/x249/node-api.svg)
