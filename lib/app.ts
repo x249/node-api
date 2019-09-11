@@ -16,12 +16,12 @@ import * as config from './config/index';
 
 process.on('uncaughtException', error => {
     console.log(error);
-    process.exit(1);
+    return process.exit(1);
 });
 
 process.on('unhandledRejection', error => {
     console.log(error);
-    process.exit(1);
+    return process.exit(1);
 });
 
 /*

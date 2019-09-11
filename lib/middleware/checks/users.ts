@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import { HTTP400Error } from '../../utils/httpErrors';
 
-export const newUserCheck = (req: Request, res: Response, next: NextFunction) => {
+export const newUserCheck: (req: Request, res: Response, next: NextFunction) => void = (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => {
     if (!req.body) {
         throw new HTTP400Error({
             message: 'Something went wrong. Please try again',
@@ -29,7 +33,11 @@ export const newUserCheck = (req: Request, res: Response, next: NextFunction) =>
     }
 };
 
-export const authUserCheck = (req: Request, res: Response, next: NextFunction) => {
+export const authUserCheck: (req: Request, res: Response, next: NextFunction) => void = (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => {
     if (!req.body) {
         throw new HTTP400Error({
             message: 'Something went wrong. Please try again',

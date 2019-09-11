@@ -1,10 +1,15 @@
 import expressJwt from 'express-jwt';
-import { Request } from 'express';
+import e, { Request } from 'express';
 import { User } from '../db/index';
+import { secret } from '../config';
 
-const secret: any = process.env.SECRET;
+const SECRET: string | undefined = secret || 'FALLBACK_JWT_SECRET';
 
-const isRevoked = async (req: Request, payload: any, done: any) => {
+const isRevoked: (req: e.Request, payload: any, done: any) => Promise<any> = async (
+    req: Request,
+    payload: any,
+    done: any,
+) => {
     const user = await User.findOne({ id: payload.sub });
     if (!user) {
         return done(null, true);
@@ -13,9 +18,9 @@ const isRevoked = async (req: Request, payload: any, done: any) => {
     done();
 };
 
-export const jwt = () => {
+export const jwt: () => e.RequestHandler = () => {
     return expressJwt({
-        secret,
+        secret: SECRET,
         isRevoked,
     }).unless({
         path: ['/', '/api/v1/user/new', '/api/v1/user/authenticate', '/api/v1/version', '/api-docs', '/api-docs/'],

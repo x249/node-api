@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import * as Config from '../config/index';
-import User from './users/index';
+import User, { DBUserInterface } from './users/index';
 
 const DB_URL: string = Config.DB_URL || 'mongodb://127.0.0.1:27017/example';
 
@@ -10,4 +10,4 @@ try {
     console.log(err);
 }
 
-export { User };
+export { User, DBUserInterface };

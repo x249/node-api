@@ -11,11 +11,11 @@ import { jwt } from './jwt';
  ** Middlewares
  */
 
-export const handleJWTAuthorization = (router: Router) => {
+export const handleJWTAuthorization: (router: Router) => void = (router: Router) => {
     router.use(jwt());
 };
 
-export const handleCors = (router: Router) => {
+export const handleCors: (router: Router) => void = (router: Router) => {
     router.use(
         cors({
             credentials: true,
@@ -24,12 +24,12 @@ export const handleCors = (router: Router) => {
     );
 };
 
-export const handleBodyParsing = (router: Router) => {
+export const handleBodyParsing: (router: Router) => void = (router: Router) => {
     router.use(bodyParser.urlencoded({ extended: true }));
     router.use(bodyParser.json());
 };
 
-export const handleCompression = (router: Router) => {
+export const handleCompression: (router: Router) => void = (router: Router) => {
     router.use(
         compression({
             level: 7,
@@ -40,12 +40,12 @@ export const handleCompression = (router: Router) => {
     );
 };
 
-export const handleLogger = (router: Router) => {
+export const handleLogger: (router: Router) => void = (router: Router) => {
     const mode = process.env.NODE_ENV === 'development' ? 'dev' : 'combined';
     router.use(morgan(mode));
 };
 
-export const handleHelmet = (router: Router) => {
+export const handleHelmet: (router: Router) => void = (router: Router) => {
     router.use(helmet()); // sane defaults
     router.use(
         helmet.permittedCrossDomainPolicies({
@@ -82,7 +82,7 @@ export const handleHelmet = (router: Router) => {
     router.use(helmet.xssFilter({ setOnOldIE: true }));
 };
 
-export const handleRateLimit = (router: Router) => {
+export const handleRateLimit: (router: Router) => void = (router: Router) => {
     router.use(
         new limiter({
             windowMs: 15 * 60 * 1000, // 15 minutes

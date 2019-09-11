@@ -1,6 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+export interface DBUserInterface extends Document {
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    role: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+const userSchema: Schema = new Schema({
     username: {
         type: String,
         required: [true, 'Username is required'],
@@ -43,6 +54,6 @@ const userSchema = new mongoose.Schema({
 
 userSchema.set('toJSON', { virtuals: true });
 
-const User = mongoose.model('User', userSchema);
+export const User = mongoose.model<DBUserInterface>('User', userSchema);
 
 export { User as default };
