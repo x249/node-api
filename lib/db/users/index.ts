@@ -27,8 +27,8 @@ const userSchema: Schema = new Schema({
         type: String,
     },
     lastName: {
-        type: String,
         required: [true, 'Last name is required'],
+        type: String,
     },
     password: {
         required: [true, 'Password is required'],
