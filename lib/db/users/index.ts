@@ -12,9 +12,13 @@ export interface DBUserInterface extends Document {
 }
 
 const userSchema: Schema = new Schema({
-    username: {
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    email: {
         type: String,
-        required: [true, 'Username is required'],
+        required: [true, 'Email is required'],
         unique: true,
         trim: true,
     },
@@ -25,12 +29,6 @@ const userSchema: Schema = new Schema({
     lastName: {
         type: String,
         required: [true, 'Last name is required'],
-    },
-    email: {
-        type: String,
-        required: [true, 'Email is required'],
-        unique: true,
-        trim: true,
     },
     password: {
         type: String,
@@ -43,12 +41,14 @@ const userSchema: Schema = new Schema({
         enum: ['User', 'Admin'],
         required: [true, 'User type is required'],
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
     updatedAt: {
         type: Date,
+    },
+    username: {
+        type: String,
+        required: [true, 'Username is required'],
+        unique: true,
+        trim: true,
     },
 });
 

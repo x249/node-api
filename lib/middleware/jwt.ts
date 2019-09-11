@@ -20,8 +20,8 @@ const isRevoked: (req: e.Request, payload: any, done: any) => Promise<any> = asy
 
 export const jwt: () => e.RequestHandler = () => {
     return expressJwt({
-        secret: SECRET,
         isRevoked,
+        secret: SECRET,
     }).unless({
         path: ['/', '/api/v1/user/new', '/api/v1/user/authenticate', '/api/v1/version', '/api-docs', '/api-docs/'],
     });

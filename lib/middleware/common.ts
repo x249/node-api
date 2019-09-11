@@ -32,10 +32,10 @@ export const handleBodyParsing: (router: Router) => void = (router: Router) => {
 export const handleCompression: (router: Router) => void = (router: Router) => {
     router.use(
         compression({
-            level: 7,
             filter: () => {
                 return true;
             },
+            level: 7,
         }),
     );
 };
@@ -54,8 +54,8 @@ export const handleHelmet: (router: Router) => void = (router: Router) => {
     );
     router.use(
         helmet.expectCt({
-            maxAge: 30,
             enforce: true,
+            maxAge: 30,
             reportUri: 'https://x249.report-uri.com/r/d/ct/enforce',
         }),
     );
@@ -66,29 +66,29 @@ export const handleHelmet: (router: Router) => void = (router: Router) => {
     );
     router.use(
         helmet.contentSecurityPolicy({
-            disableAndroid: true,
             directives: {
-                defaultSrc: ["'self'"],
-                styleSrc: ["'self'"],
-                imgSrc: ["'self'"],
-                scriptSrc: ["'self'"],
-                objectSrc: ["'self'"],
                 connectSrc: ["'self'"],
+                defaultSrc: ["'self'"],
                 formAction: ["'self'"],
+                objectSrc: ["'self'"],
+                imgSrc: ["'self'"],
                 reportUri: 'https://x249.report-uri.com/r/d/csp/reportOnly',
+                scriptSrc: ["'self'"],
+                styleSrc: ["'self'"],
             },
+            disableAndroid: true,
         }),
     );
     router.use(helmet.xssFilter({ setOnOldIE: true }));
 };
 
 export const handleRateLimit: (router: Router) => void = (router: Router) => {
-    const max = 100;
     const windowMs = 15 * 60 * 60; // 15 minutes
+    const max = 100;
     router.use(
         new limiter({
-            windowMs,
             max,
+            windowMs,
         }),
     );
 };

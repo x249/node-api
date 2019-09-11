@@ -18,8 +18,8 @@ describe('controller', () => {
             username: 'jd12345',
         });
         expect(user).toStrictEqual({
-            status: status201,
             message: 'User successfully created!',
+            status: status201,
         });
         done();
     });
@@ -39,8 +39,8 @@ describe('controller', () => {
 
     test('authenticate existing user', async done => {
         const auth: any = await authenticateUser({
-            username: 'jd12345',
             password: 'testing123',
+            username: 'jd12345',
         });
         expect(auth.status).toEqual(status200);
         done();
@@ -48,8 +48,8 @@ describe('controller', () => {
 
     test('authenticate a non existing user', async done => {
         const auth: any = await authenticateUser({
-            username: 'dj12345',
             password: 'testing123',
+            username: 'dj12345',
         });
         expect(auth.status).toEqual(status404);
         done();

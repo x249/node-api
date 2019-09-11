@@ -12,12 +12,12 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
             const saltRounds = 10;
             const hashedPassword = await bcrypt.hash(params.password, saltRounds);
             const user: DBUserInterface = new User({
-                username: params.username,
                 email: params.email,
                 firstName: params.firstName,
                 lastName: params.lastName,
                 password: hashedPassword,
                 role: params.role,
+                username: params.username,
             });
             console.log(typeof user);
             await user.save();
@@ -39,10 +39,10 @@ export const authenticateUser: AuthenticateUserType = async (params: AuthUserPar
                 const token = await generateToken(user._id, user.role, '30d');
                 const { password, ...userWithoutPassword } = user;
                 return {
-                    status: 200,
                     message: 'Authentication successful',
-                    user: userWithoutPassword,
+                    status: 200,
                     token,
+                    user: userWithoutPassword,
                 };
             } else {
                 return { status: 400, error: 'Wrong username or password' };

@@ -4,8 +4,6 @@ import { authUserCheck, newUserCheck } from '../../middleware/checks/users';
 
 export default [
     {
-        path: '/api/v1/user/new',
-        method: 'post',
         handler: [
             newUserCheck,
             async (req: Request, res: Response, next: NextFunction) => {
@@ -14,10 +12,10 @@ export default [
                 res.status(status).json(responseWithoutStatus);
             },
         ],
+        method: 'post',
+        path: '/api/v1/user/new',
     },
     {
-        path: '/api/v1/user/authenticate',
-        method: 'post',
         handler: [
             authUserCheck,
             async (req: Request, res: Response, next: NextFunction) => {
@@ -26,5 +24,7 @@ export default [
                 res.status(status).json(responseWithoutStatus);
             },
         ],
+        method: 'post',
+        path: '/api/v1/user/authenticate',
     },
 ];
