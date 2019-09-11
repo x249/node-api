@@ -10,7 +10,7 @@ import {
 
 import { handleAPIDocs } from './apiDocs';
 
-export default [
+const middlewareHandler = [
     handleAPIDocs,
     handleCors,
     handleCompression,
@@ -20,3 +20,5 @@ export default [
     handleRateLimit,
     handleJWTAuthorization,
 ];
+
+export { middlewareHandler };

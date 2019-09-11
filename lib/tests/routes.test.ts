@@ -1,7 +1,7 @@
 import express, { Router } from 'express';
 import request from 'supertest';
 import { applyMiddleware, applyRoutes } from '../utils';
-import middleware from '../middleware';
+import { middlewareHandler } from '../middleware';
 import errorHandlers from '../middleware/errorHandler';
 import routes from '../routes/main';
 import mongoose from 'mongoose';
@@ -14,7 +14,7 @@ describe('routes', () => {
 
     beforeEach(() => {
         router = express();
-        applyMiddleware(middleware, router);
+        applyMiddleware(middlewareHandler, router);
         applyRoutes(routes, router);
         applyMiddleware(errorHandlers, router);
     });
