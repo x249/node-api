@@ -29,8 +29,8 @@
 
 ## Requirements
 
--   Node >= 11.14.0
--   NPM >= 6.7.0
+-   Node >= 8.16.1
+-   NPM >= 6.4.1
 -   Yarn >= 1.15.2
 -   Docker-Compose >= 1.24.0
 
