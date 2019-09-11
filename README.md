@@ -1,4 +1,3 @@
-
 # Node API
 
 [![Build Status](https://travis-ci.org/x249/node-api.svg?branch=master)](https://travis-ci.org/x249/node-api)
@@ -11,28 +10,28 @@
 
 ## Features
 
-- [X] RESTful Architecture
-- [X] Easy-to-read code
-- [X] Built with **Scalability** in mind
-- [X] TypeScript
-- [X] Express
-- [X] MongoDB (Available using docker-compose)
-- [X] Process Management and Clustering using [PM2](http://pm2.keymetrics.io/)
-- [X] Unit and Integration testing ready
-- [X] API Documentation using [SwaggerUI](https://swagger.io/tools/swagger-ui/)
-- [X] Authentication and Authorization (JWT and Role based)
-- [X] Middleware Handling
-- [X] Error Handling
-- [X] Security Headers (Rate limiting, CORS, XSS, CSRF\*)
+-   [x] RESTful Architecture
+-   [x] Easy-to-read code
+-   [x] Built with **Scalability** in mind
+-   [x] TypeScript
+-   [x] Express
+-   [x] MongoDB (Available using docker-compose)
+-   [x] Process Management and Clustering using [PM2](http://pm2.keymetrics.io/)
+-   [x] Unit and Integration testing ready
+-   [x] API Documentation using [SwaggerUI](https://swagger.io/tools/swagger-ui/)
+-   [x] Authentication and Authorization (JWT and Role based)
+-   [x] Middleware Handling
+-   [x] Error Handling
+-   [x] Security Headers (Rate limiting, CORS, XSS, CSRF\*)
 
-(* not yet implemented)
+(\* not yet implemented)
 
 ## Requirements
 
-- Node >= 11.14.0
-- NPM >= 6.7.0
-- Yarn >= 1.15.2
-- Docker-Compose >= 1.24.0
+-   Node >= 11.14.0
+-   NPM >= 6.7.0
+-   Yarn >= 1.15.2
+-   Docker-Compose >= 1.24.0
 
 ## Build Setup
 
