@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 
-const schema = mongoose.Schema;
-
-const userSchema = new schema({
+const userSchema = new mongoose.Schema({
 	username: {
 		type: String,
 		required: [true, "Username is required"],
@@ -47,4 +45,4 @@ userSchema.set("toJSON", { virtuals: true });
 
 const User = mongoose.model("User", userSchema);
 
-export default User;
+export { User as default };

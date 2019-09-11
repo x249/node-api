@@ -2,7 +2,6 @@ import expressJwt from "express-jwt";
 import { Request } from "express";
 import { User } from "../db/index";
 
-
 const secret: any = process.env.SECRET;
 
 export const jwt = () => {
@@ -21,11 +20,11 @@ export const jwt = () => {
 	});
 };
 
-async function isRevoked(req: Request, payload: any, done: any) {
+const isRevoked = async (req: Request, payload: any, done: any) => {
 	const user = await User.findOne({ id: payload.sub });
 	if (!user) {
 		return done(null, true);
 	}
 
 	done();
-}
+};

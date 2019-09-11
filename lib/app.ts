@@ -15,13 +15,13 @@ import * as config from "./config/index";
  */
 
 process.on("uncaughtException", error => {
-	console.log(error);
-	process.exit(1);
+  console.log(error);
+  process.exit(1);
 });
 
 process.on("unhandledRejection", error => {
-	console.log(error);
-	process.exit(1);
+  console.log(error);
+  process.exit(1);
 });
 
 /*
@@ -35,14 +35,14 @@ applyMiddleware(errorHandlers, router);
 router.enable("trust proxy"); // Enables hosting behind proxy (Heroku)
 
 const env =
-	config.env === "production"
-		? "production"
-		: config.env === "testing"
-		? "testing"
-		: "development";
+  config.env === "production"
+    ? "production"
+    : config.env === "testing"
+    ? "testing"
+    : "development";
 
 const host =
-	env === "production" ? process.env.HOST || "localhost" : "localhost";
+  env === "production" ? process.env.HOST || "localhost" : "localhost";
 const port = env === "production" ? process.env.PORT || 8080 : 4000;
 const emo = env === "production" ? emoji.get("coffee") : emoji.get("gear");
 
@@ -53,14 +53,14 @@ const emo = env === "production" ? emoji.get("coffee") : emoji.get("gear");
 const server = http.createServer(router);
 
 server.listen(port, () => {
-	console.log("\n-+============================+-\n");
-	consola.info(chalk.blue(`Environment: ${env} `) + `${emo}`);
-	consola.success(
-		chalk.green.bold("Built and working!") + ` ${emoji.get("clap")}`
-	);
-	consola.success(
-		chalk.green.bold("URL: http://" + host + ":" + port) +
-			` ${emoji.get("see_no_evil")}`
-	);
-	console.log("\n-+============================+-");
+  console.log("\n-+============================+-\n");
+  consola.info(chalk.blue(`Environment: ${env} `) + `${emo}`);
+  consola.success(
+    chalk.green.bold("Built and working!") + ` ${emoji.get("clap")}`
+  );
+  consola.success(
+    chalk.green.bold("URL: http://" + host + ":" + port) +
+      ` ${emoji.get("see_no_evil")}`
+  );
+  console.log("\n-+============================+-");
 });
