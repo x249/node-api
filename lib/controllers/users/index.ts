@@ -9,7 +9,8 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
         return { status: 400, error: 'User already exists' };
     } else {
         try {
-            const hashedPassword = await bcrypt.hash(params.password, 10);
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(params.password, saltRounds);
             const user: DBUserInterface = new User({
                 username: params.username,
                 email: params.email,

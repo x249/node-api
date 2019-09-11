@@ -6,6 +6,9 @@ import errorHandlers from '../middleware/errorHandler';
 import routes from '../routes/main';
 import mongoose from 'mongoose';
 
+const status200 = 200;
+const status401 = 401;
+
 describe('routes', () => {
     let router: Router;
 
@@ -18,7 +21,7 @@ describe('routes', () => {
 
     test('api health check', async done => {
         const response = await request(router).get('/');
-        expect(response.status).toEqual(200);
+        expect(response.status).toEqual(status200);
         done();
     });
 
@@ -31,7 +34,7 @@ describe('routes', () => {
 
     test('a non-existing api method', async done => {
         const response = await request(router).get('/api/v12/non-existing-api-route');
-        expect(response.status).toEqual(401);
+        expect(response.status).toEqual(status401);
         done();
     });
 

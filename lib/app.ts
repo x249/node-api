@@ -39,10 +39,12 @@ applyRoutes(routes, router);
 applyMiddleware(errorHandlers, router);
 router.enable('trust proxy'); // Enables hosting behind proxy (Heroku)
 
+const fallBackPort = 4000;
+
 const env = config.env === 'production' ? 'production' : config.env === 'testing' ? 'testing' : 'development';
 
 const host = env === 'production' ? process.env.HOST || 'localhost' : 'localhost';
-const port = env === 'production' ? process.env.PORT || 8080 : 4000;
+const port = env === 'production' ? process.env.PORT || 8080 : fallBackPort;
 const emo = env === 'production' ? emoji.get('coffee') : emoji.get('gear');
 
 /*

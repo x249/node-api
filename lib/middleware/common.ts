@@ -83,10 +83,12 @@ export const handleHelmet: (router: Router) => void = (router: Router) => {
 };
 
 export const handleRateLimit: (router: Router) => void = (router: Router) => {
+    const max = 100;
+    const windowMs = 15 * 60 * 60; // 15 minutes
     router.use(
         new limiter({
-            windowMs: 15 * 60 * 1000, // 15 minutes
-            max: 100,
+            windowMs,
+            max,
         }),
     );
 };

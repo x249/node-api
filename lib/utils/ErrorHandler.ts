@@ -1,6 +1,9 @@
 import { Response, NextFunction } from 'express';
 import { HTTPClientError, HTTP404Error } from './httpErrors';
 
+const status401 = 401;
+const status500 = 500;
+
 export const notFoundError: () => never = () => {
     throw new HTTP404Error('Method Not Found');
 };
@@ -11,7 +14,7 @@ export const authorizationError: (err: Error, res: Response, next: NextFunction)
     next: NextFunction,
 ) => {
     if (err.name === 'UnauthorizedError') {
-        res.status(401).send("You aren't Authorzied");
+        res.status(status401).send("You aren't Authorzied");
     } else {
         next(err);
     }
@@ -37,8 +40,8 @@ export const serverError: (err: Error, res: Response, next: NextFunction) => voi
 ) => {
     console.error(err);
     if (process.env.NODE_ENV === 'production') {
-        res.status(500).send('Internal Server Error');
+        res.status(status500).send('Internal Server Error');
     } else {
-        res.status(500).send(err.stack);
+        res.status(status500).send(err.stack);
     }
 };

@@ -2,6 +2,11 @@ import { newUser, authenticateUser } from '../controllers/users';
 import { User } from '../db';
 import mongoose from 'mongoose';
 
+const status200 = 200;
+const status201 = 201;
+const status400 = 400;
+const status404 = 404;
+
 describe('controller', () => {
     test('create new user', async done => {
         const user = await newUser({
@@ -13,7 +18,7 @@ describe('controller', () => {
             username: 'jd12345',
         });
         expect(user).toStrictEqual({
-            status: 201,
+            status: status201,
             message: 'User successfully created!',
         });
         done();
@@ -28,7 +33,7 @@ describe('controller', () => {
             role: 'User',
             username: 'jd12345',
         });
-        expect(user).toStrictEqual({ error: 'User already exists', status: 400 });
+        expect(user).toStrictEqual({ error: 'User already exists', status: status400 });
         done();
     });
 
@@ -37,7 +42,7 @@ describe('controller', () => {
             username: 'jd12345',
             password: 'testing123',
         });
-        expect(auth.status).toEqual(200);
+        expect(auth.status).toEqual(status200);
         done();
     });
 
@@ -46,7 +51,7 @@ describe('controller', () => {
             username: 'dj12345',
             password: 'testing123',
         });
-        expect(auth.status).toEqual(404);
+        expect(auth.status).toEqual(status404);
         done();
     });
 
