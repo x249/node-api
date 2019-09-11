@@ -13,11 +13,11 @@ export const applyMiddleware: (middleware: Wrapper[], router: Router) => void = 
 
 type Handler = (req: Request, res: Response, next: NextFunction) => Promise<void> | void;
 
-type Route = {
+interface Route {
     path: string;
     method: string;
     handler: Handler | Handler[];
-};
+}
 
 export const applyRoutes: (routes: Route[], router: Router) => void = (routes: Route[], router: Router) => {
     for (const route of routes) {
