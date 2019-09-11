@@ -38,6 +38,10 @@ export const authenticateUser: AuthenticateUserType = async (params: AuthUserPar
             if (authSuccess) {
                 const token = await generateToken(user._id, user.role, '30d');
                 const { password, ...userWithoutPassword } = user;
+                const removedPassword = {
+                    password,
+                };
+                delete removedPassword.password;
                 return {
                     message: 'Authentication successful',
                     status: 200,

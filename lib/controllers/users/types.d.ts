@@ -33,7 +33,15 @@ export type AuthenticateUserType = (
     | {
           status: number;
           message: string;
-          user: any;
+          user: {
+              username: string;
+              email: string;
+              role: string;
+              lastName: string;
+              firstName: string;
+              createdAt: Date;
+              updatedAt?: Date;
+          };
           token: string;
           error?: undefined;
       }
