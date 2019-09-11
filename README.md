@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/x249/node-api.svg?branch=master)](https://travis-ci.org/x249/node-api)
 [![Coverage Status](https://coveralls.io/repos/github/x249/node-api/badge.svg?branch=master)](https://coveralls.io/github/x249/node-api?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9aca11d1b2f94ec0a36efcb9c4b67d00)](https://www.codacy.com/manual/phr3nzy/node-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=x249/node-api&amp;utm_campaign=Badge_Grade)
 ![GitHub Release Date](https://img.shields.io/github/release-date/x249/node-api.svg?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/x249/node-api.svg?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/x249/node-api.svg)
