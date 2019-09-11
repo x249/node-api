@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { HTTP400Error } from '../../utils/httpErrors';
+import { HTTP400Error } from '../../utils/httpErrors/HTTP400Error';
 
 export const newUserCheck: (req: Request, res: Response, next: NextFunction) => void = (
     req: Request,
