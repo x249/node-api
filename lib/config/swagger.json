@@ -1,75 +1,75 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.0"
-  },
-  "host": "localhost:4000",
-  "basePath": "/",
-  "schemes": [
-    "http"
-  ],
-  "produces": [
-    "application/json",
-    "application/html"
-  ],
-  "paths": {
-    "/": {
-      "get": {
-        "tags": [
-          "API"
-        ],
-        "summary": "Check the health of the api (Up or crashed)",
-        "responses": {
-          "200": {
-            "description": "Sends a 200 with a small description of the API"
-          },
-          "400": {
-            "description": "Bad request. Might be a result from an unknown API path."
-          },
-          "401": {
-            "description": "Results from an unauthorized attempt to use the current API path. Requires authentication."
-          }
-        },
-        "content": {
-          "application/html": {
-            "text": "Node Backend API"
-          }
-        }
-      }
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0"
     },
-    "/api/v1/version": {
-      "get": {
-        "tags": [
-          "API"
-        ],
-        "summary": "Prints out the version of the API",
-        "responses": {
-          "200": {
-            "description": "Returns the current version of the API which is set dynamically via an environment variable."
-          }
+    "host": "localhost:4000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json",
+        "application/html"
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Check the health of the api (Up or crashed)",
+                "responses": {
+                    "200": {
+                        "description": "Sends a 200 with a small description of the API"
+                    },
+                    "400": {
+                        "description": "Bad request. Might be a result from an unknown API path."
+                    },
+                    "401": {
+                        "description": "Results from an unauthorized attempt to use the current API path. Requires authentication."
+                    }
+                },
+                "content": {
+                    "application/html": {
+                        "text": "Node Backend API"
+                    }
+                }
+            }
         },
-        "content": {
-          "application/json": {
-            "message": "API_VERSION"
-          }
+        "/api/v1/version": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Prints out the version of the API",
+                "responses": {
+                    "200": {
+                        "description": "Returns the current version of the API which is set dynamically via an environment variable."
+                    }
+                },
+                "content": {
+                    "application/json": {
+                        "message": "API_VERSION"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/new": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Creates a user based on input parameters",
+                "responses": {
+                    "200": {
+                        "description": "User successfully created"
+                    },
+                    "400": {
+                        "description": "Bad request. Results from bad or missing entry of parameters. Or a user is already created with those credentials (username or email)"
+                    }
+                }
+            }
         }
-      }
-    },
-    "/api/v1/user/new": {
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "summary": "Creates a user based on input parameters",
-        "responses": {
-          "200": {
-            "description": "User successfully created"
-          },
-          "400": {
-            "description": "Bad request. Results from bad or missing entry of parameters. Or a user is already created with those credentials (username or email)"
-          }
-        }
-      }
     }
-  }
 }
