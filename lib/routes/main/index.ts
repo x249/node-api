@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { API_VER } from '../../config/index';
 
-export default [
+export const mainRoutes = [
     {
         handler: async (req: Request, res: Response) => {
             res.send('Node Backend API');

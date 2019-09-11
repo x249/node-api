@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { authenticateUser, newUser } from '../../controllers/users';
 import { authUserCheck, newUserCheck } from '../../middleware/checks/users';
 
-export default [
+export const userRoutes = [
     {
         handler: [
             newUserCheck,

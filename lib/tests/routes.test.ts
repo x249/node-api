@@ -2,8 +2,8 @@ import express, { Router } from 'express';
 import request from 'supertest';
 import { applyMiddleware, applyRoutes } from '../utils';
 import { middlewareHandler } from '../middleware';
-import errorHandlers from '../middleware/errorHandler';
-import routes from '../routes/main';
+import { errorHandlers } from '../middleware/errorHandler';
+import { mainRoutes } from '../routes/main';
 import mongoose from 'mongoose';
 
 const status200 = 200;
@@ -15,7 +15,7 @@ describe('routes', () => {
     beforeEach(() => {
         router = express();
         applyMiddleware(middlewareHandler, router);
-        applyRoutes(routes, router);
+        applyRoutes(mainRoutes, router);
         applyMiddleware(errorHandlers, router);
     });
 

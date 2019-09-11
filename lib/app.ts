@@ -3,7 +3,7 @@ import http from 'http';
 import express from 'express';
 import { applyMiddleware, applyRoutes } from './utils';
 import { middlewareHandler } from './middleware';
-import errorHandlers from './middleware/errorHandler';
+import { errorHandlers } from './middleware/errorHandler';
 import { routeHandler } from './routes';
 import chalk from 'chalk';
 import consola from 'consola';

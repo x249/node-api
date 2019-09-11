@@ -25,4 +25,6 @@ const handleServerError: (router: Router) => void = (router: Router) => {
     });
 };
 
-export default [handle404Error, handle401Error, handleClientError, handleServerError];
+const errorHandlers = [handle404Error, handle401Error, handleClientError, handleServerError];
+
+export { errorHandlers };

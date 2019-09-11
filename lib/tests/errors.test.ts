@@ -1,7 +1,7 @@
 import { HTTP400Error, HTTP401Error, HTTP404Error } from '../utils/httpErrors';
 import express, { Router } from 'express';
 import { applyMiddleware } from '../utils';
-import errorHandlers from '../middleware/errorHandler';
+import { errorHandlers } from '../middleware/errorHandler';
 
 describe('errors', () => {
     test('throws http 400 error', async done => {
