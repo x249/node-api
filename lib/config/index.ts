@@ -1,4 +1,6 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const env: string | undefined = process.env.NODE_ENV;
 

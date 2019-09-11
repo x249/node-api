@@ -1,4 +1,4 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 import http from 'http';
 import express from 'express';
 import { applyMiddleware, applyRoutes } from './utils';
@@ -9,6 +9,11 @@ import chalk from 'chalk';
 import consola from 'consola';
 import emoji from 'node-emoji';
 import * as config from './config/index';
+
+/*
+ ** Load dotenv config
+ */
+dotenv.config();
 
 /*
  ** Handle exceptions and rejections

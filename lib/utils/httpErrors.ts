@@ -1,6 +1,6 @@
 export abstract class HTTPClientError extends Error {
-    readonly statusCode!: number;
-    readonly name!: string;
+    public readonly statusCode!: number;
+    public readonly name!: string;
 
     constructor(message: object | string) {
         if (message instanceof Object) {
@@ -14,7 +14,7 @@ export abstract class HTTPClientError extends Error {
 }
 
 export class HTTP400Error extends HTTPClientError {
-    readonly statusCode = 400;
+    public readonly statusCode = 400;
 
     constructor(message: string | Record<string, any> = 'Bad request') {
         super(message);
@@ -22,7 +22,7 @@ export class HTTP400Error extends HTTPClientError {
 }
 
 export class HTTP401Error extends HTTPClientError {
-    readonly statusCode = 401;
+    public readonly statusCode = 401;
 
     constructor(message: string | object = 'Unauthorized') {
         super(message);
