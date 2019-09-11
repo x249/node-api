@@ -46,6 +46,7 @@ export const handleLogger: (router: Router) => void = (router: Router) => {
 };
 
 export const handleHelmet: (router: Router) => void = (router: Router) => {
+    const maxAge = 30;
     router.use(helmet()); // sane defaults
     router.use(
         helmet.permittedCrossDomainPolicies({
@@ -55,7 +56,7 @@ export const handleHelmet: (router: Router) => void = (router: Router) => {
     router.use(
         helmet.expectCt({
             enforce: true,
-            maxAge: 30,
+            maxAge,
             reportUri: 'https://x249.report-uri.com/r/d/ct/enforce',
         }),
     );
@@ -83,7 +84,9 @@ export const handleHelmet: (router: Router) => void = (router: Router) => {
 };
 
 export const handleRateLimit: (router: Router) => void = (router: Router) => {
-    const windowMs = 15 * 60 * 60; // 15 minutes
+    const seconds = 60;
+    const minutes = 15;
+    const windowMs = minutes * seconds; // 15 minutes
     const max = 100;
     router.use(
         new limiter({
