@@ -25,9 +25,8 @@ describe('routes', () => {
         done();
     });
 
-    test('api version checl', async done => {
+    test('api version check', async done => {
         const response = await request(router).get('/api/v1/version');
-        // console.log(response);
         expect(response.text).toStrictEqual('API Version: 1.0.0');
         done();
     });
