@@ -1,7 +1,7 @@
 import { User, DBUserInterface } from '../../db/index';
 import * as bcrypt from 'bcryptjs';
 import { generateToken } from '../../helpers';
-import { NewUserType, AuthenticateUserType, NewUserParams, AuthUserParams } from './types';
+import { NewUserType, AuthenticateUserType, NewUserParams, AuthUserParams } from '../../types/controllers/user';
 
 export const newUser: NewUserType = async (params: NewUserParams) => {
     const userExists: DBUserInterface | null = await User.findOne({ username: params.username });

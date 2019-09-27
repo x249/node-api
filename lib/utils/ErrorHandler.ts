@@ -1,5 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { HTTPClientError, HTTP404Error } from './httpErrors';
+import { ErrorHandlerType } from '../types/utils/errors';
 
 const status401 = 401;
 const status500 = 500;
@@ -8,11 +9,7 @@ export const notFoundError: () => never = () => {
     throw new HTTP404Error('Method Not Found');
 };
 
-export const authorizationError: (err: Error, res: Response, next: NextFunction) => void = (
-    err: Error,
-    res: Response,
-    next: NextFunction,
-) => {
+export const authorizationError: ErrorHandlerType = (err: Error, res: Response, next: NextFunction) => {
     if (err.name === 'UnauthorizedError') {
         res.status(status401).send("You aren't Authorzied");
     } else {
@@ -20,11 +17,7 @@ export const authorizationError: (err: Error, res: Response, next: NextFunction)
     }
 };
 
-export const clientError: (err: Error, res: Response, next: NextFunction) => void = (
-    err: Error,
-    res: Response,
-    next: NextFunction,
-) => {
+export const clientError: ErrorHandlerType = (err: Error, res: Response, next: NextFunction) => {
     if (err instanceof HTTPClientError) {
         console.warn(err);
         res.status(err.statusCode).send(err.message);
@@ -33,11 +26,7 @@ export const clientError: (err: Error, res: Response, next: NextFunction) => voi
     }
 };
 
-export const serverError: (err: Error, res: Response, next: NextFunction) => void = (
-    err: Error,
-    res: Response,
-    next: NextFunction,
-) => {
+export const serverError: ErrorHandlerType = (err: Error, res: Response, next: NextFunction) => {
     console.error(err);
     if (process.env.NODE_ENV === 'production') {
         res.status(status500).send('Internal Server Error');

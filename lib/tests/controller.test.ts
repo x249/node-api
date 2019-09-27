@@ -1,6 +1,7 @@
 import { newUser, authenticateUser } from '../controllers/users';
 import { User, DBUserInterface } from '../db';
 import mongoose from 'mongoose';
+import { NewUserType, AuthUserType } from '../types/tests/controller.test';
 
 const status200 = 200;
 const status201 = 201;
@@ -9,18 +10,7 @@ const status404 = 404;
 
 describe('controller', () => {
     test('create new user', async done => {
-        const user:
-            | {
-                  status: number;
-                  error: string;
-                  message?: undefined;
-              }
-            | {
-                  status: number;
-                  message: string;
-                  error?: undefined;
-              }
-            | undefined = await newUser({
+        const user: NewUserType = await newUser({
             email: 'test@testing.com',
             firstName: 'John',
             lastName: 'Doe',
@@ -36,18 +26,7 @@ describe('controller', () => {
     });
 
     test('create an existing user', async done => {
-        const user:
-            | {
-                  status: number;
-                  error: string;
-                  message?: undefined;
-              }
-            | {
-                  status: number;
-                  message: string;
-                  error?: undefined;
-              }
-            | undefined = await newUser({
+        const user: NewUserType = await newUser({
             email: 'test@testing.com',
             firstName: 'John',
             lastName: 'Doe',
@@ -60,30 +39,7 @@ describe('controller', () => {
     });
 
     test('authenticate existing user', async done => {
-        const auth:
-            | {
-                  status: number;
-                  error: string;
-                  message?: undefined;
-                  user?: undefined;
-                  token?: undefined;
-              }
-            | {
-                  status: number;
-                  message: string;
-                  user: {
-                      username: string;
-                      email: string;
-                      role: string;
-                      lastName: string;
-                      firstName: string;
-                      createdAt: Date;
-                      updatedAt?: Date | undefined;
-                  };
-                  token: string;
-                  error?: undefined;
-              }
-            | undefined = await authenticateUser({
+        const auth: AuthUserType = await authenticateUser({
             password: 'testing123',
             username: 'jd12345',
         });
@@ -94,30 +50,7 @@ describe('controller', () => {
     });
 
     test('authenticate a non existing user', async done => {
-        const auth:
-            | {
-                  status: number;
-                  error: string;
-                  message?: undefined;
-                  user?: undefined;
-                  token?: undefined;
-              }
-            | {
-                  status: number;
-                  message: string;
-                  user: {
-                      username: string;
-                      email: string;
-                      role: string;
-                      lastName: string;
-                      firstName: string;
-                      createdAt: Date;
-                      updatedAt?: Date | undefined;
-                  };
-                  token: string;
-                  error?: undefined;
-              }
-            | undefined = await authenticateUser({
+        const auth: AuthUserType = await authenticateUser({
             password: 'testing123',
             username: 'dj12345',
         });

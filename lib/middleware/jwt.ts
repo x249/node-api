@@ -1,11 +1,11 @@
 import expressJwt from 'express-jwt';
-import e, { Request } from 'express';
+import { Request, RequestHandler } from 'express';
 import { User } from '../db/index';
 import { secret } from '../config';
 
 const SECRET: string | undefined = secret || 'FALLBACK_JWT_SECRET';
 
-const isRevoked: (req: e.Request, payload: any, done: any) => Promise<any> = async (
+const isRevoked: (req: Request, payload: any, done: any) => Promise<any> = async (
     req: Request,
     payload: any,
     done: any,
@@ -18,7 +18,7 @@ const isRevoked: (req: e.Request, payload: any, done: any) => Promise<any> = asy
     done();
 };
 
-export const jwt: () => e.RequestHandler = () => {
+export const jwt: () => RequestHandler = () => {
     return expressJwt({
         isRevoked,
         secret: SECRET,

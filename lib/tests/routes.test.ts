@@ -20,19 +20,19 @@ describe('routes', () => {
     });
 
     test('api health check', async done => {
-        const response = await request(router).get('/');
+        const response: request.Response = await request(router).get('/');
         expect(response.status).toEqual(status200);
         done();
     });
 
     test('api version check', async done => {
-        const response = await request(router).get('/api/v1/version');
+        const response: request.Response = await request(router).get('/api/v1/version');
         expect(response.text).toStrictEqual('API Version: 1.0.0');
         done();
     });
 
     test('a non-existing api method', async done => {
-        const response = await request(router).get('/api/v12/non-existing-api-route');
+        const response: request.Response = await request(router).get('/api/v12/non-existing-api-route');
         expect(response.status).toEqual(status401);
         done();
     });
