@@ -1,4 +1,4 @@
-# Node API
+# Scalable Node API
 
 [![Build Status](https://travis-ci.org/x249/node-api.svg?branch=master)](https://travis-ci.org/x249/node-api)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9aca11d1b2f94ec0a36efcb9c4b67d00)](https://www.codacy.com/manual/phr3nzy/node-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=x249/node-api&amp;utm_campaign=Badge_Grade)
