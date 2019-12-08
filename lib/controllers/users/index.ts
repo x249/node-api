@@ -1,4 +1,4 @@
-import { User, DBUserInterface } from '../../db/index';
+import { User, DBUserInterface } from '../../db';
 import * as bcrypt from 'bcryptjs';
 import { generateToken } from '../../helpers';
 import { NewUserType, AuthenticateUserType, NewUserParams, AuthUserParams } from '../../types/controllers/user';

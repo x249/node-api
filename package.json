@@ -71,6 +71,7 @@
         "@types/jsonwebtoken": "8.3.2",
         "@types/mongoose": "5.5.3",
         "@types/morgan": "1.7.35",
+        "@types/node": "^12.12.14",
         "@types/node-emoji": "1.8.1",
         "@types/request-promise": "4.1.44",
         "@types/serve-favicon": "2.2.30",

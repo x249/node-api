@@ -2,10 +2,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export const env: string | undefined = process.env.NODE_ENV;
-
-export const secret: string | undefined = process.env.SECRET;
-
-export const API_VER: string | undefined = process.env.API_VER;
-
-export const DB_URL: string | undefined = process.env.DB_URL;
+export const {
+    NODE_ENV = 'production',
+    SECRET = 'SECRET_FOR_JWT_GOES_HERE',
+    API_VER = '1.0.0',
+    DB_URL = 'mongodb://127.0.0.1:27017/example',
+} = process.env;

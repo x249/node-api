@@ -1,4 +1,4 @@
-import { DBUserInterface } from '../../db/index';
+import { DBUserInterface } from '../../db';
 
 export interface NewUserParams {
     username: DBUserInterface['username'];

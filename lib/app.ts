@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import http from 'http';
 import express from 'express';
 import { applyMiddleware, applyRoutes } from './utils';
@@ -8,12 +7,7 @@ import { routeHandler } from './routes';
 import chalk from 'chalk';
 import consola from 'consola';
 import emoji from 'node-emoji';
-import * as config from './config/index';
-
-/*
- ** Load dotenv config
- */
-dotenv.config();
+import { NODE_ENV } from './config';
 
 /*
  ** Handle exceptions and rejections
@@ -42,11 +36,9 @@ router.enable('trust proxy'); // Enables hosting behind proxy (Heroku)
 const mainFallbackPort = 4000;
 const productionFallbackPort = 8080;
 
-const env = config.env === 'production' ? 'production' : config.env === 'testing' ? 'testing' : 'development';
-
-const host = env === 'production' ? process.env.HOST || 'localhost' : 'localhost';
-const port = env === 'production' ? process.env.PORT || productionFallbackPort : mainFallbackPort;
-const emo = env === 'production' ? emoji.get('coffee') : emoji.get('gear');
+const host = NODE_ENV === 'production' ? process.env.HOST || 'localhost' : 'localhost';
+const port = NODE_ENV === 'production' ? process.env.PORT || productionFallbackPort : mainFallbackPort;
+const emo = NODE_ENV === 'production' ? emoji.get('coffee') : emoji.get('gear');
 
 /*
  **	Server Config
@@ -56,7 +48,7 @@ const server = http.createServer(router);
 
 server.listen(port, () => {
     console.log('\n-+============================+-\n');
-    consola.info(chalk.blue(`Environment: ${env} `) + `${emo}`);
+    consola.info(chalk.blue(`Environment: ${NODE_ENV} `) + `${emo}`);
     consola.success(chalk.green.bold('Built and working!') + ` ${emoji.get('clap')}`);
     consola.success(chalk.green.bold('URL: http://' + host + ':' + port) + ` ${emoji.get('see_no_evil')}`);
     console.log('\n-+============================+-');

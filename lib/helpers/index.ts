@@ -1,7 +1,5 @@
 import jsonwebtoken from 'jsonwebtoken';
-import { secret } from '../config';
-
-const SECRET: string | undefined = secret || 'FALLBACK_JWT_SECRET';
+import { SECRET } from '../config';
 
 export const generateToken: (id: string, userType: string, expiry: string) => Promise<string> = async (
     id: string,

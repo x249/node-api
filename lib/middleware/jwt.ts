@@ -1,9 +1,7 @@
 import expressJwt from 'express-jwt';
 import { Request, RequestHandler } from 'express';
-import { User } from '../db/index';
-import { secret } from '../config';
-
-const SECRET: string | undefined = secret || 'FALLBACK_JWT_SECRET';
+import { User } from '../db';
+import { SECRET } from '../config';
 
 const isRevoked: (req: Request, payload: any, done: any) => Promise<any> = async (
     req: Request,

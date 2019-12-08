@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
-import * as Config from '../config/index';
-import User, { DBUserInterface } from './users/index';
-
-const DB_URL: string = Config.DB_URL || 'mongodb://127.0.0.1:27017/example';
+import { DB_URL } from '../config';
+import User, { DBUserInterface } from './users';
 
 try {
     mongoose.connect(DB_URL, { useNewUrlParser: true, useCreateIndex: true });

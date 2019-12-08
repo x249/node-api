@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { API_VER } from '../../config/index';
+import { API_VER } from '../../config';
 
 export const mainRoutes = [
     {
