@@ -1,5 +1,5 @@
 import { User, DBUserInterface } from '../../db';
-import { hash, compare } from 'bcryptjs';
+import { hash, verify, argon2i } from 'argon2';
 import { generateToken } from '../../helpers';
 import {
 	NewUserType,
@@ -16,8 +16,11 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
 		return { status: 400, error: 'User already exists' };
 	} else {
 		try {
-			const saltRounds = 10;
-			const hashedPassword = await hash(params.password, saltRounds);
+			const hashedPassword = await hash(params.password, {
+				type: argon2i,
+				parallelism: 2,
+				memoryCost: 8192,
+			});
 			const user: DBUserInterface = new User({
 				email: params.email,
 				firstName: params.firstName,
@@ -45,7 +48,7 @@ export const authenticateUser: AuthenticateUserType = async (
 		if (!user) {
 			return { status: 404, error: "User doesn't exist" };
 		} else {
-			const authSuccess = await compare(params.password, user.password);
+			const authSuccess = await verify(params.password, user.password);
 			if (authSuccess) {
 				const token = await generateToken(user._id, user.role, '30d');
 				const { password, ...userWithoutPassword } = user;
