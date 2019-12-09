@@ -1,16 +1,23 @@
 import { User, DBUserInterface } from '../../db';
-import * as bcrypt from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 import { generateToken } from '../../helpers';
-import { NewUserType, AuthenticateUserType, NewUserParams, AuthUserParams } from '../../types/controllers/user';
+import {
+	NewUserType,
+	AuthenticateUserType,
+	NewUserParams,
+	AuthUserParams,
+} from '../../types/controllers/user';
 
 export const newUser: NewUserType = async (params: NewUserParams) => {
-	const userExists: DBUserInterface | null = await User.findOne({ username: params.username });
+	const userExists: DBUserInterface | null = await User.findOne({
+		username: params.username,
+	});
 	if (userExists) {
 		return { status: 400, error: 'User already exists' };
 	} else {
 		try {
 			const saltRounds = 10;
-			const hashedPassword = await bcrypt.hash(params.password, saltRounds);
+			const hashedPassword = await hash(params.password, saltRounds);
 			const user: DBUserInterface = new User({
 				email: params.email,
 				firstName: params.firstName,
@@ -28,13 +35,17 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
 	}
 };
 
-export const authenticateUser: AuthenticateUserType = async (params: AuthUserParams) => {
+export const authenticateUser: AuthenticateUserType = async (
+	params: AuthUserParams,
+) => {
 	try {
-		const user: DBUserInterface | null = await User.findOne({ username: params.username });
+		const user: DBUserInterface | null = await User.findOne({
+			username: params.username,
+		});
 		if (!user) {
 			return { status: 404, error: "User doesn't exist" };
 		} else {
-			const authSuccess = await bcrypt.compare(params.password, user.password);
+			const authSuccess = await compare(params.password, user.password);
 			if (authSuccess) {
 				const token = await generateToken(user._id, user.role, '30d');
 				const { password, ...userWithoutPassword } = user;

@@ -34,7 +34,10 @@ describe('controller', () => {
 			role: 'User',
 			username: 'jd12345',
 		});
-		expect(user).toStrictEqual({ error: 'User already exists', status: status400 });
+		expect(user).toStrictEqual({
+			error: 'User already exists',
+			status: status400,
+		});
 		done();
 	});
 

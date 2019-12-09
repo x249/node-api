@@ -26,6 +26,11 @@ const handleServerError: MiddlewareMainType = (router: Router) => {
 	});
 };
 
-const errorHandlers = [handle404Error, handle401Error, handleClientError, handleServerError];
+const errorHandlers = [
+	handle404Error,
+	handle401Error,
+	handleClientError,
+	handleServerError,
+];
 
 export { errorHandlers };

@@ -2,7 +2,11 @@ import { Request, Response, NextFunction } from 'express';
 import { HTTP400Error } from '../../utils/httpErrors/HTTP400Error';
 import { MiddlewareChecksRequestType } from '../../types/middleware';
 
-export const newUserCheck: MiddlewareChecksRequestType = (req: Request, res: Response, next: NextFunction) => {
+export const newUserCheck: MiddlewareChecksRequestType = (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
 	if (!req.body) {
 		throw new HTTP400Error({
 			message: 'Something went wrong. Please try again',
@@ -30,7 +34,11 @@ export const newUserCheck: MiddlewareChecksRequestType = (req: Request, res: Res
 	}
 };
 
-export const authUserCheck: MiddlewareChecksRequestType = (req: Request, res: Response, next: NextFunction) => {
+export const authUserCheck: MiddlewareChecksRequestType = (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
 	if (!req.body) {
 		throw new HTTP400Error({
 			message: 'Something went wrong. Please try again',
