@@ -14,20 +14,20 @@ import { NODE_ENV } from './config';
  */
 
 process.on('uncaughtException', error => {
-	console.log(error);
-	return process.exit(1);
+    console.log(error);
+    return process.exit(1);
 });
 
 process.on('unhandledRejection', error => {
-	console.log(error);
-	return process.exit(1);
+    console.log(error);
+    return process.exit(1);
 });
 
 /*
  ** App config
  */
 
-const router = express();
+const router: express.Express = express();
 applyMiddleware(middlewareHandler, router);
 applyRoutes(routeHandler, router);
 applyMiddleware(errorHandlers, router);
@@ -37,11 +37,11 @@ const mainFallbackPort = 4000;
 const productionFallbackPort = 8080;
 
 const host =
-	NODE_ENV === 'production' ? process.env.HOST || 'localhost' : 'localhost';
+    NODE_ENV === 'production' ? process.env.HOST || 'localhost' : 'localhost';
 const port =
-	NODE_ENV === 'production'
-		? process.env.PORT || productionFallbackPort
-		: mainFallbackPort;
+    NODE_ENV === 'production'
+        ? process.env.PORT || productionFallbackPort
+        : mainFallbackPort;
 const emo = NODE_ENV === 'production' ? emoji.get('coffee') : emoji.get('gear');
 
 /*
@@ -51,14 +51,14 @@ const emo = NODE_ENV === 'production' ? emoji.get('coffee') : emoji.get('gear');
 const server = http.createServer(router);
 
 server.listen(port, () => {
-	console.log('\n-+============================+-\n');
-	consola.info(chalk.blue(`Environment: ${NODE_ENV} `) + `${emo}`);
-	consola.success(
-		chalk.green.bold('Built and working!') + ` ${emoji.get('clap')}`,
-	);
-	consola.success(
-		chalk.green.bold('URL: http://' + host + ':' + port) +
-			` ${emoji.get('see_no_evil')}`,
-	);
-	console.log('\n-+============================+-');
+    console.log('\n-+============================+-\n');
+    consola.info(chalk.blue(`Environment: ${NODE_ENV} `) + `${emo}`);
+    consola.success(
+        chalk.green.bold('Built and working!') + ` ${emoji.get('clap')}`,
+    );
+    consola.success(
+        chalk.green.bold('URL: http://' + host + ':' + port) +
+            ` ${emoji.get('see_no_evil')}`,
+    );
+    console.log('\n-+============================+-');
 });

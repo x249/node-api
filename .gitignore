@@ -89,3 +89,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# VSCode settings folder
+.vscode
