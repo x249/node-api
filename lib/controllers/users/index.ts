@@ -18,8 +18,8 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
         try {
             const hashedPassword = await hash(params.password, {
                 type: argon2i,
-                parallelism: 2,
                 memoryCost: 8192,
+                parallelism: 2,
             });
             const user: DBUserInterface = new User({
                 email: params.email,
