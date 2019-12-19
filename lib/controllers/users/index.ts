@@ -1,7 +1,12 @@
 import { User, DBUserInterface } from '../../db';
 import { hash, verify, argon2i } from 'argon2';
 import { generateToken } from '../../helpers';
-import { NewUserType, AuthenticateUserType, NewUserParams, AuthUserParams } from '../../types/controllers/user';
+import {
+    NewUserType,
+    AuthenticateUserType,
+    NewUserParams,
+    AuthUserParams,
+} from '../../types/controllers/user';
 
 export const newUser: NewUserType = async (params: NewUserParams) => {
     const userExists: DBUserInterface | null = await User.findOne({
@@ -33,7 +38,9 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
     }
 };
 
-export const authenticateUser: AuthenticateUserType = async (params: AuthUserParams) => {
+export const authenticateUser: AuthenticateUserType = async (
+    params: AuthUserParams,
+) => {
     try {
         const user: DBUserInterface | null = await User.findOne({
             username: params.username,

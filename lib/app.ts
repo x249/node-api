@@ -36,8 +36,12 @@ router.enable('trust proxy'); // Enables hosting behind proxy (Heroku)
 const mainFallbackPort = 4000;
 const productionFallbackPort = 8080;
 
-const host = NODE_ENV === 'production' ? process.env.HOST || 'localhost' : 'localhost';
-const port = NODE_ENV === 'production' ? process.env.PORT || productionFallbackPort : mainFallbackPort;
+const host =
+    NODE_ENV === 'production' ? process.env.HOST || 'localhost' : 'localhost';
+const port =
+    NODE_ENV === 'production'
+        ? process.env.PORT || productionFallbackPort
+        : mainFallbackPort;
 const emo = NODE_ENV === 'production' ? emoji.get('coffee') : emoji.get('gear');
 
 /*
@@ -49,7 +53,12 @@ const server = http.createServer(router);
 server.listen(port, () => {
     console.log('\n-+============================+-\n');
     consola.info(chalk.blue(`Environment: ${NODE_ENV} `) + `${emo}`);
-    consola.success(chalk.green.bold('Built and working!') + ` ${emoji.get('clap')}`);
-    consola.success(chalk.green.bold('URL: http://' + host + ':' + port) + ` ${emoji.get('see_no_evil')}`);
+    consola.success(
+        chalk.green.bold('Built and working!') + ` ${emoji.get('clap')}`,
+    );
+    consola.success(
+        chalk.green.bold('URL: http://' + host + ':' + port) +
+            ` ${emoji.get('see_no_evil')}`,
+    );
     console.log('\n-+============================+-');
 });
