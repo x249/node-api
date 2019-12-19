@@ -9,34 +9,23 @@ const handle404Error: MiddlewareMainType = (router: Router) => {
 };
 
 const handle401Error: MiddlewareMainType = (router: Router) => {
-    router.use(
-        (err: Error, req: Request, res: Response, next: NextFunction) => {
-            ErrorHandler.authorizationError(err, res, next);
-        },
-    );
+    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        ErrorHandler.authorizationError(err, res, next);
+    });
 };
 
 const handleClientError: MiddlewareMainType = (router: Router) => {
-    router.use(
-        (err: Error, req: Request, res: Response, next: NextFunction) => {
-            ErrorHandler.clientError(err, res, next);
-        },
-    );
+    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        ErrorHandler.clientError(err, res, next);
+    });
 };
 
 const handleServerError: MiddlewareMainType = (router: Router) => {
-    router.use(
-        (err: Error, req: Request, res: Response, next: NextFunction) => {
-            ErrorHandler.serverError(err, res, next);
-        },
-    );
+    router.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+        ErrorHandler.serverError(err, res, next);
+    });
 };
 
-const errorHandlers = [
-    handle404Error,
-    handle401Error,
-    handleClientError,
-    handleServerError,
-];
+const errorHandlers = [handle404Error, handle401Error, handleClientError, handleServerError];
 
 export { errorHandlers };

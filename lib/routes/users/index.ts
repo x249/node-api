@@ -1,10 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { authenticateUser, newUser } from '../../controllers/users';
 import { authUserCheck, newUserCheck } from '../../middleware/checks/users';
-import {
-    NewUserRequestType,
-    AuthUserRequestType,
-} from '../../types/routes/user';
+import { NewUserRequestType, AuthUserRequestType } from '../../types/routes/user';
 
 export const userRoutes = [
     {
@@ -25,9 +22,7 @@ export const userRoutes = [
         handler: [
             authUserCheck,
             async (req: Request, res: Response, next: NextFunction) => {
-                const response: AuthUserRequestType = await authenticateUser(
-                    req.body,
-                );
+                const response: AuthUserRequestType = await authenticateUser(req.body);
                 if (response) {
                     const { status, ...responseWithoutStatus } = response;
                     res.status(status).json(responseWithoutStatus);
