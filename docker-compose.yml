@@ -6,6 +6,19 @@ services:
             - '27017:27017'
         volumes:
             - 'mongodb_data:/bitnami'
+        expose: 
+            - 27017
+    api:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        ports: 
+            - '8080:8080'
+        restart: always
+        depends_on: 
+            - 'mongodb'
+        environment: 
+            - 'DB_URL=mongodb://mongodb/production'
 
 volumes:
     mongodb_data:
