@@ -18,7 +18,8 @@
 -   [x] Built with **Scalability** in mind
 -   [x] TypeScript
 -   [x] Express
--   [x] MongoDB (Available using docker-compose)
+-   [x] MongoDB
+-   [X] Docker
 -   [x] Process Management and Clustering using [PM2](http://pm2.keymetrics.io/)
 -   [x] Unit and Integration testing ready
 -   [x] API Documentation using [SwaggerUI](https://swagger.io/tools/swagger-ui/)
@@ -39,7 +40,7 @@
 ## Build Setup
 
 ```bash
-# run the bitnami/mongodb docker image on port 27017
+# run using docker
 $ docker-compose up -d
 
 # install dependencies
