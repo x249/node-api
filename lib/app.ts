@@ -57,7 +57,7 @@ server.listen(port, () => {
         chalk.green.bold('Built and working!') + ` ${emoji.get('clap')}`,
     );
     consola.success(
-        chalk.green.bold('URL: http://' + host + ':' + port) +
+        chalk.green.bold(`URL: http://${host}:${port}`) +
             ` ${emoji.get('see_no_evil')}`,
     );
     console.log('\n-+============================+-');
