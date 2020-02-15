@@ -1,32 +1,18 @@
-os: linux
-distro: bionic
-sudo: required
 language: node_js
 notifications:
-    email: false
+  email: false
 node_js:
-    - node
-    - lts/*
-    - 11
-    - 10
-    - 8
+  - 12
+  - 11
+  - 10
+  - 8
 services:
-    - docker
-env:
-    global:
-        - DOCKER_COMPOSE_VERSION: 1.24.0
+  - docker
 before_install:
-    - sudo apt-get update
-    - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-ce
-    - sudo rm /usr/local/bin/docker-compose
-    - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-    - chmod +x docker-compose
-    - sudo mv docker-compose /usr/local/bin
-    - docker-compose up -d
-    - docker ps
+  - docker-compose up -d
 jobs:
-    include:
-        - stage: test
-          script: yarn test
-        # - stage: coverage
-        #   script: yarn test:coverage
+  include:
+    - stage: test
+      script: yarn test
+    # - stage: coverage
+    #   script: yarn test:coverage
