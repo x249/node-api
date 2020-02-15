@@ -1,6 +1,5 @@
 import { newUser, authenticateUser } from '../controllers/users';
-import { User, DBUserInterface } from '../db';
-import mongoose from 'mongoose';
+import db, { DBUserInterface } from '../db';
 import { NewUserType, AuthUserType } from '../types/tests/controller.test';
 
 const status200 = 200;
@@ -72,15 +71,16 @@ describe('controller', () => {
     });
 
     afterAll(async done => {
+        const User = db.collection('user');
         const user: DBUserInterface | null = await User.findOne({
             email: 'test@testing.com',
         });
 
         if (user) {
-            await User.findByIdAndDelete(user._id);
+            await User.findOneAndDelete(user._id);
         }
 
-        await mongoose.connection.close();
+        await db.close();
         done();
     });
 });
