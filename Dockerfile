@@ -1,4 +1,4 @@
-FROM node:alpine AS builder
+FROM node:12.14.0-alpine3.11 AS builder
 
 WORKDIR /app
 
@@ -17,10 +17,12 @@ RUN apk del build-dependencies
 
 COPY . .
 
-FROM node:alpine
+RUN npm run build
+
+FROM node:12.14.0-alpine3.11
 
 WORKDIR /app
 
-COPY --from=builder /app .
+COPY --from=builder . .
 
 CMD ["npm", "run", "prod"]
