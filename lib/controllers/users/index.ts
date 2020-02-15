@@ -48,12 +48,18 @@ export const authenticateUser: AuthenticateUserType = async (
         const user: DBUserInterface | null = await User.findOne({
             username: params.username,
         });
+        console.log(user);
         if (!user) {
             await db.close();
             return { status: 404, error: "User doesn't exist" };
         } else {
-            const authSuccess = await verify(params.password, user.password);
-            if (authSuccess) {
+            const passwordsMatch = await verify(user.password, params.password, {
+                version: argon2i,
+                memoryCost: 8192,
+                parallelism: 2
+            });
+            console.log(passwordsMatch);
+            if (!!passwordsMatch) {
                 const token = await generateToken(user._id, user.role, '30d');
                 const { password, ...userWithoutPassword } = user;
                 const removedPassword = {
@@ -74,6 +80,6 @@ export const authenticateUser: AuthenticateUserType = async (
         }
     } catch (err) {
         await db.close();
-        return { status: 500, error: err };
+        return { status: 500, error: err.message };
     }
 };
