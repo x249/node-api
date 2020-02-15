@@ -4,7 +4,7 @@ import { applyMiddleware, applyRoutes } from '../utils';
 import { middlewareHandler } from '../middleware';
 import { errorHandlers } from '../middleware/errorHandler';
 import { mainRoutes } from '../routes/main';
-import mongoose from 'mongoose';
+import db from '../db';
 
 const status200 = 200;
 const status401 = 401;
@@ -43,7 +43,7 @@ describe('routes', () => {
 
     afterAll(async done => {
         // Closing the DB connection allows Jest to exit successfully.
-        await mongoose.connection.close();
+        await db.close();
         done();
     });
 });
