@@ -4,7 +4,7 @@ import { applyMiddleware, applyRoutes } from '../utils';
 import { middlewareHandler } from '../middleware';
 import { errorHandlers } from '../middleware/errorHandler';
 import { mainRoutes } from '../routes/main';
-import db from '../db';
+import { db } from '../db';
 
 const status200 = 200;
 const status401 = 401;

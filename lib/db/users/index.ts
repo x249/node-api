@@ -1,4 +1,5 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import { Schema, Document } from 'mongoose';
+import { db } from '../engine';
 
 export interface DBUserInterface extends Document {
     createdAt: Date;
@@ -52,6 +53,6 @@ const userSchema: Schema = new Schema({
 
 userSchema.set('toJSON', { virtuals: true });
 
-export const User = mongoose.model<DBUserInterface>('User', userSchema);
+export const User = db.model<DBUserInterface>('User', userSchema);
 
 export { User as default };

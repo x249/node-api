@@ -1,9 +1,7 @@
 import expressJwt, { IsRevokedCallback } from 'express-jwt';
 import { Request, RequestHandler } from 'express';
-import db from '../db';
+import { User } from '../db';
 import { SECRET } from '../config';
-
-const User = db.collection('user');
 
 export const isRevoked: IsRevokedCallback = async (
     req: Request,

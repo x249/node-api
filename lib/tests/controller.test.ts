@@ -1,5 +1,5 @@
 import { newUser, authenticateUser } from '../controllers/users';
-import db, { DBUserInterface } from '../db';
+import { db, User, DBUserInterface } from '../db';
 import { NewUserType, AuthUserType } from '../types/tests/controller.test';
 
 const status200 = 200;
@@ -8,6 +8,18 @@ const status400 = 400;
 const status404 = 404;
 
 describe('controller', () => {
+    beforeAll(async done => {
+        const user: DBUserInterface | null = await User.findOne({
+            email: 'test@testing.com',
+        });
+
+        if (user) {
+            await User.findOneAndDelete({ _id: user._id });
+        }
+
+        done();
+    });
+
     test('create new user', async done => {
         const newUserResponse: NewUserType = await newUser({
             email: 'test@testing.com',
@@ -18,13 +30,15 @@ describe('controller', () => {
             username: 'jd12345',
         });
 
+        console.log(newUserResponse);
+
         expect(newUserResponse).toStrictEqual({
             message: 'User successfully created!',
             status: status201,
         });
 
         done();
-    });
+    }, 30000);
 
     test('create an existing user', async done => {
         const newUserResponse: NewUserType = await newUser({
@@ -36,42 +50,47 @@ describe('controller', () => {
             username: 'jd12345',
         });
 
+        console.log(newUserResponse);
+
         expect(newUserResponse).toStrictEqual({
             error: 'User already exists',
             status: status400,
         });
 
         done();
-    });
+    }, 30000);
 
     test('authenticate existing user', async done => {
-        const response: AuthUserType = await authenticateUser({
+        const authUserResponse: AuthUserType = await authenticateUser({
             password: 'testing123',
             username: 'jd12345',
         });
 
-        if (response) {
-            expect(response.status).toEqual(status200);
+        console.log(authUserResponse);
+
+        if (!!authUserResponse) {
+            expect(authUserResponse.status).toEqual(status200);
         }
 
         done();
-    });
+    }, 30000);
 
     test('authenticate a non existing user', async done => {
-        const response: AuthUserType = await authenticateUser({
-            password: 'testing123',
+        const authUserResponse: AuthUserType = await authenticateUser({
+            password: 'testing1234',
             username: 'dj12345',
         });
 
-        if (response) {
-            expect(response.status).toEqual(status404);
+        console.log(authUserResponse);
+
+        if (!!authUserResponse) {
+            expect(authUserResponse.status).toEqual(status404);
         }
 
         done();
-    });
+    }, 30000);
 
     afterAll(async done => {
-        const User = db.collection('user');
         const user: DBUserInterface | null = await User.findOne({
             email: 'test@testing.com',
         });

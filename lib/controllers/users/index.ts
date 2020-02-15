@@ -1,4 +1,4 @@
-import db, { DBUserInterface } from '../../db';
+import { User, DBUserInterface } from '../../db';
 import { hash, verify, argon2i } from 'argon2';
 import { generateToken } from '../../helpers';
 import {
@@ -8,14 +8,14 @@ import {
     AuthUserParams,
 } from '../../types/controllers/user';
 
-const User = db.collection('user');
-
 export const newUser: NewUserType = async (params: NewUserParams) => {
-    const userExists = await User.findOne({
+    const usernameTaken = await User.findOne({
         username: params.username,
     });
-    if (userExists) {
-        await db.close();
+    const emailTaken = await User.findOne({
+        email: params.email,
+    });
+    if (!!usernameTaken || !!emailTaken) {
         return { status: 400, error: 'User already exists' };
     } else {
         try {
@@ -24,7 +24,7 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
                 memoryCost: 8192,
                 parallelism: 2,
             });
-            await User.insertOne({
+            const user = await User.create({
                 email: params.email,
                 firstName: params.firstName,
                 lastName: params.lastName,
@@ -32,10 +32,9 @@ export const newUser: NewUserType = async (params: NewUserParams) => {
                 role: params.role,
                 username: params.username,
             });
-            await db.close();
+            await user.save();
             return { status: 201, message: 'User successfully created!' };
         } catch (err) {
-            await db.close();
             return { status: 500, error: err };
         }
     }
@@ -48,25 +47,25 @@ export const authenticateUser: AuthenticateUserType = async (
         const user: DBUserInterface | null = await User.findOne({
             username: params.username,
         });
-        console.log(user);
         if (!user) {
-            await db.close();
             return { status: 404, error: "User doesn't exist" };
         } else {
-            const passwordsMatch = await verify(user.password, params.password, {
-                version: argon2i,
-                memoryCost: 8192,
-                parallelism: 2
-            });
-            console.log(passwordsMatch);
+            const passwordsMatch = await verify(
+                user.password,
+                params.password,
+                {
+                    version: argon2i,
+                    memoryCost: 8192,
+                    parallelism: 2,
+                },
+            );
             if (!!passwordsMatch) {
                 const token = await generateToken(user._id, user.role, '30d');
-                const { password, ...userWithoutPassword } = user;
+                const { password, ...userWithoutPassword } = user.toObject();
                 const removedPassword = {
                     password,
                 };
                 delete removedPassword.password;
-                await db.close();
                 return {
                     message: 'Authentication successful',
                     status: 200,
@@ -74,12 +73,10 @@ export const authenticateUser: AuthenticateUserType = async (
                     user: userWithoutPassword,
                 };
             } else {
-                await db.close();
                 return { status: 400, error: 'Wrong username or password' };
             }
         }
     } catch (err) {
-        await db.close();
         return { status: 500, error: err.message };
     }
 };
