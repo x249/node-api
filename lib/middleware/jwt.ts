@@ -3,7 +3,11 @@ import { Request, RequestHandler } from 'express';
 import { User } from '../db';
 import { SECRET } from '../config';
 
-const isRevoked: IsRevokedCallback = async (req: Request, payload, done) => {
+export const isRevoked: IsRevokedCallback = async (
+    req: Request,
+    payload,
+    done,
+) => {
     const user = await User.findOne({ id: payload.sub });
     if (!user) {
         return done(null, true);
