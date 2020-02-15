@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import compression from 'compression';
@@ -33,10 +33,14 @@ export const handleBodyParsing: MiddlewareMainType = (router: Router) => {
 export const handleCompression: MiddlewareMainType = (router: Router) => {
     router.use(
         compression({
-            filter: () => {
-                return true;
+            filter: (req: Request, res: Response) => {
+                // x-no-compression header management
+                return !!req.headers['x-no-compression']
+                    ? false
+                    : compression.filter(req, res);
             },
-            level: 7,
+            level: 9,
+            threshold: 0,
         }),
     );
 };
