@@ -56,7 +56,7 @@ export type GetAllUsersType = () => Promise<
       }
     | {
           status: number;
-          error: any;
+          error: Error;
           users?: undefined;
       }
 >;
@@ -72,7 +72,7 @@ export type GetUserType = (
 ) => Promise<
     | {
           status: number;
-          user: any;
+          user: DBUserInterface;
           message?: undefined;
           error?: undefined;
       }
@@ -84,7 +84,7 @@ export type GetUserType = (
       }
     | {
           status: number;
-          error: any;
+          error: Error;
           user?: undefined;
           message?: undefined;
       }
