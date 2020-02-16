@@ -32,6 +32,7 @@ export const applyRoutes: (routes: Route[], router: Router) => void = (
 ) => {
     for (const route of routes) {
         const { method, path, handler } = route;
+        // eslint-disable-next-line
         (router as any)[method](path, handler);
     }
 };
