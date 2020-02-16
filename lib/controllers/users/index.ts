@@ -64,7 +64,11 @@ export const authenticateUser: AuthenticateUserType = async (
                 },
             );
             if (!!passwordsMatch) {
-                const token = await generateToken(user._id, user.role, '30d');
+                const token = await generateToken({
+                    id: user._id,
+                    userType: user.role,
+                    expiresIn: '30d',
+                });
                 const { password, ...userWithoutPassword } = user;
                 const removedPassword = {
                     password,
