@@ -115,7 +115,7 @@ describe('controller', () => {
         const user = await User.findOne({ email: 'test@testing.com' })
             .lean()
             .select('id');
-        const getUserResponse = await getUser({ id: user.id });
+        const getUserResponse = await getUser({ _id: user._id });
 
         expect(getUserResponse.user).toBeDefined();
         expect(getUserResponse.status).toBe(status200);

@@ -60,7 +60,7 @@ export const userRoutes = [
     {
         handler: [
             (async (req: Request, res: Response, next: NextFunction) => {
-                const response = await getUser({ id: req.params.id });
+                const response = await getUser({ _id: req.params.id });
                 if (!!response) {
                     const { status, ...responseWithoutStatus } = response;
                     res.status(status).json(responseWithoutStatus);

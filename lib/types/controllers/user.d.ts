@@ -62,7 +62,7 @@ export type GetAllUsersType = () => Promise<
 >;
 
 export type GetUserParams = {
-    id?: number;
+    _id?: string;
     username?: string;
     email?: string;
 };
