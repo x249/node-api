@@ -11,10 +11,14 @@ import {
 export const newUser: NewUserType = async (params: NewUserParams) => {
     const usernameTaken = await User.findOne({
         username: params.username,
-    });
+    })
+        .lean()
+        .select('username');
     const emailTaken = await User.findOne({
         email: params.email,
-    });
+    })
+        .lean()
+        .select('email');
     if (!!usernameTaken || !!emailTaken) {
         return { status: 400, error: 'User already exists' };
     } else {
@@ -46,7 +50,7 @@ export const authenticateUser: AuthenticateUserType = async (
     try {
         const user: DBUserInterface | null = await User.findOne({
             username: params.username,
-        });
+        }).lean();
         if (!user) {
             return { status: 404, error: "User doesn't exist" };
         } else {
@@ -61,7 +65,7 @@ export const authenticateUser: AuthenticateUserType = async (
             );
             if (!!passwordsMatch) {
                 const token = await generateToken(user._id, user.role, '30d');
-                const { password, ...userWithoutPassword } = user.toObject();
+                const { password, ...userWithoutPassword } = user;
                 const removedPassword = {
                     password,
                 };
