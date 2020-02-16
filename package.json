@@ -53,8 +53,6 @@
         "morgan": "1.9.1",
         "node-emoji": "1.10.0",
         "pm2": "3.5.1",
-        "request": "2.88.0",
-        "request-promise": "4.2.4",
         "serve-favicon": "2.5.0",
         "swagger-ui-express": "4.0.6"
     },
@@ -72,7 +70,6 @@
         "@types/morgan": "1.7.35",
         "@types/node": "12.12.14",
         "@types/node-emoji": "1.8.1",
-        "@types/request-promise": "4.1.44",
         "@types/serve-favicon": "2.2.30",
         "@types/supertest": "2.0.7",
         "@types/swagger-ui-express": "3.0.1",
@@ -87,6 +84,6 @@
         "supertest": "4.0.2",
         "ts-jest": "24.0.2",
         "tsc-watch": "2.2.1",
-        "typescript": "3.4.5"
+        "typescript": "3.7.5"
     }
 }
