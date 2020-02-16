@@ -94,7 +94,9 @@ export const authenticateUser: AuthenticateUserType = async (
 
 export const getAllUsers: GetAllUsersType = async () => {
     try {
-        const users: DBUserInterface[] = await User.find().lean();
+        const users: DBUserInterface[] = await User.find()
+            .lean()
+            .select('-password');
         return { status: 200, users };
     } catch (err) {
         return { status: 500, error: err.message };
@@ -103,7 +105,9 @@ export const getAllUsers: GetAllUsersType = async () => {
 
 export const getUser: GetUserType = async (params: GetUserParams) => {
     try {
-        const user: DBUserInterface = await User.findOne({ ...params }).lean();
+        const user: DBUserInterface = await User.findOne({ ...params })
+            .lean()
+            .select('-password');
         return !!user
             ? { status: 200, user }
             : { status: 400, message: 'User not found!' };
