@@ -2,7 +2,6 @@ import { HTTP400Error, HTTP401Error, HTTP404Error } from '../utils/httpErrors';
 import express, { Router } from 'express';
 import { applyMiddleware } from '../utils';
 import { errorHandlers } from '../middleware/errorHandler';
-import { db } from '../db';
 
 describe('errors', () => {
     test('throws http 400 error', async done => {
@@ -33,11 +32,6 @@ describe('errors', () => {
         const router: Router = express();
         applyMiddleware(errorHandlers, router);
         expect(router).toBeDefined();
-        done();
-    });
-
-    afterAll(async done => {
-        await db.close();
         done();
     });
 });

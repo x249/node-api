@@ -1,3 +1,5 @@
+import { DBUserInterface } from '../../db';
+
 export type NewUserRequestType =
     | {
           status: number;
@@ -35,3 +37,15 @@ export type AuthUserRequestType =
           error?: undefined;
       }
     | undefined;
+
+export type GetAllUsersRequestType =
+    | {
+          status: number;
+          users: DBUserInterface[];
+          error?: undefined;
+      }
+    | {
+          status: number;
+          error: Error;
+          users?: undefined;
+      };

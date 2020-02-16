@@ -1,4 +1,9 @@
-import { newUser, authenticateUser } from '../controllers/users';
+import {
+    newUser,
+    authenticateUser,
+    getUser,
+    getAllUsers,
+} from '../controllers/users';
 import { db, User, DBUserInterface } from '../db';
 import { NewUserType, AuthUserType } from '../types/tests/controller.test';
 
@@ -82,13 +87,59 @@ describe('controller', () => {
         done();
     });
 
+    test('get a specific user using email', async done => {
+        const user = await User.findOne({ email: 'test@testing.com' })
+            .lean()
+            .select('email');
+        const getUserResponse = await getUser({ email: user.email });
+
+        expect(getUserResponse.user).toBeDefined();
+        expect(getUserResponse.status).toBe(status200);
+        expect(getUserResponse.error).toBeFalsy();
+        done();
+    });
+
+    test('get a specific user using username', async done => {
+        const user = await User.findOne({ username: 'jd12345' })
+            .lean()
+            .select('username');
+        const getUserResponse = await getUser({ username: user.username });
+
+        expect(getUserResponse.user).toBeDefined();
+        expect(getUserResponse.status).toBe(status200);
+        expect(getUserResponse.error).toBeFalsy();
+        done();
+    });
+
+    test('get a specific user using id', async done => {
+        const user = await User.findOne({ email: 'test@testing.com' })
+            .lean()
+            .select('id');
+        const getUserResponse = await getUser({ id: user.id });
+
+        expect(getUserResponse.user).toBeDefined();
+        expect(getUserResponse.status).toBe(status200);
+        expect(getUserResponse.error).toBeFalsy();
+        done();
+    });
+
+    test('get all users', async done => {
+        const getAllUsersResponse = await getAllUsers();
+
+        expect(getAllUsersResponse).toBeDefined();
+        expect(getAllUsersResponse.users).toBeDefined();
+        done();
+    });
+
     afterAll(async done => {
         const user: DBUserInterface | null = await User.findOne({
             email: 'test@testing.com',
-        });
+        })
+            .lean()
+            .select('id');
 
         if (user) {
-            await User.findOneAndDelete(user._id);
+            await User.findOneAndDelete(user.id);
         }
 
         await db.close();

@@ -47,3 +47,45 @@ export type AuthenticateUserType = (
       }
     | undefined
 >;
+
+export type GetAllUsersType = () => Promise<
+    | {
+          status: number;
+          users: DBUserInterface[];
+          error?: undefined;
+      }
+    | {
+          status: number;
+          error: any;
+          users?: undefined;
+      }
+>;
+
+export type GetUserParams = {
+    id?: number;
+    username?: string;
+    email?: string;
+};
+
+export type GetUserType = (
+    params: GetUserParams,
+) => Promise<
+    | {
+          status: number;
+          user: any;
+          message?: undefined;
+          error?: undefined;
+      }
+    | {
+          status: number;
+          message: string;
+          user?: undefined;
+          error?: undefined;
+      }
+    | {
+          status: number;
+          error: any;
+          user?: undefined;
+          message?: undefined;
+      }
+>;

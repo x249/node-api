@@ -6,6 +6,9 @@ import {
     AuthenticateUserType,
     NewUserParams,
     AuthUserParams,
+    GetAllUsersType,
+    GetUserParams,
+    GetUserType,
 } from '../../types/controllers/user';
 
 export const newUser: NewUserType = async (params: NewUserParams) => {
@@ -84,6 +87,26 @@ export const authenticateUser: AuthenticateUserType = async (
                 return { status: 400, error: 'Wrong username or password' };
             }
         }
+    } catch (err) {
+        return { status: 500, error: err.message };
+    }
+};
+
+export const getAllUsers: GetAllUsersType = async () => {
+    try {
+        const users: DBUserInterface[] = await User.find().lean();
+        return { status: 200, users };
+    } catch (err) {
+        return { status: 500, error: err.message };
+    }
+};
+
+export const getUser: GetUserType = async (params: GetUserParams) => {
+    try {
+        const user: DBUserInterface = await User.findOne({ ...params }).lean();
+        return !!user
+            ? { status: 200, user }
+            : { status: 400, message: 'User not found!' };
     } catch (err) {
         return { status: 500, error: err.message };
     }

@@ -4,7 +4,6 @@ import { applyMiddleware, applyRoutes } from '../utils';
 import { middlewareHandler } from '../middleware';
 import { errorHandlers } from '../middleware/errorHandler';
 import { mainRoutes } from '../routes/main';
-import { db } from '../db';
 
 const status200 = 200;
 const status401 = 401;
@@ -38,12 +37,6 @@ describe('routes', () => {
             '/api/v12/non-existing-api-route',
         );
         expect(response.status).toEqual(status401);
-        done();
-    });
-
-    afterAll(async done => {
-        // Closing the DB connection allows Jest to exit successfully.
-        await db.close();
         done();
     });
 });
