@@ -30,15 +30,13 @@ describe('controller', () => {
             username: 'jd12345',
         });
 
-        console.log(newUserResponse);
-
         expect(newUserResponse).toStrictEqual({
             message: 'User successfully created!',
             status: status201,
         });
 
         done();
-    }, 30000);
+    });
 
     test('create an existing user', async done => {
         const newUserResponse: NewUserType = await newUser({
@@ -50,15 +48,13 @@ describe('controller', () => {
             username: 'jd12345',
         });
 
-        console.log(newUserResponse);
-
         expect(newUserResponse).toStrictEqual({
             error: 'User already exists',
             status: status400,
         });
 
         done();
-    }, 30000);
+    });
 
     test('authenticate existing user', async done => {
         const authUserResponse: AuthUserType = await authenticateUser({
@@ -66,14 +62,12 @@ describe('controller', () => {
             username: 'jd12345',
         });
 
-        console.log(authUserResponse);
-
         if (!!authUserResponse) {
             expect(authUserResponse.status).toEqual(status200);
         }
 
         done();
-    }, 30000);
+    });
 
     test('authenticate a non existing user', async done => {
         const authUserResponse: AuthUserType = await authenticateUser({
@@ -81,14 +75,12 @@ describe('controller', () => {
             username: 'dj12345',
         });
 
-        console.log(authUserResponse);
-
         if (!!authUserResponse) {
             expect(authUserResponse.status).toEqual(status404);
         }
 
         done();
-    }, 30000);
+    });
 
     afterAll(async done => {
         const user: DBUserInterface | null = await User.findOne({
