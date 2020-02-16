@@ -1,13 +1,9 @@
 import expressJwt, { IsRevokedCallback } from 'express-jwt';
-import { Request, RequestHandler } from 'express';
+import { RequestHandler } from 'express';
 import { User } from '../db';
 import { SECRET } from '../config';
 
-export const isRevoked: IsRevokedCallback = async (
-    req: Request,
-    payload,
-    done,
-) => {
+export const isRevoked: IsRevokedCallback = async (req, payload, done) => {
     const user = await User.findOne({ id: payload.sub });
     if (!user) {
         return done(null, true);
