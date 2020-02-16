@@ -19,8 +19,8 @@ export const jwt: () => RequestHandler = () => {
     }).unless({
         path: [
             '/',
-            '/api/v1/user/new',
-            '/api/v1/user/authenticate',
+            '/api/v1/users/new',
+            '/api/v1/users/authenticate',
             '/api/v1/version',
             '/api-docs',
             '/api-docs/',
