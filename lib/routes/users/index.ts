@@ -11,19 +11,20 @@ import {
     AuthUserRequestType,
     GetAllUsersRequestType,
 } from '../../types/routes/user';
-import { HandlerFunctionType } from '../../types/middleware';
+import { RouteHandlerFunc } from '../../types/middleware';
 
 export const userRoutes = [
     {
         handler: [
             newUserCheck,
+            // eslint-disable-next-line
             (async (req: Request, res: Response, next: NextFunction) => {
                 const response: NewUserRequestType = await newUser(req.body);
                 if (!!response) {
                     const { status, ...responseWithoutStatus } = response;
                     res.status(status).json(responseWithoutStatus);
                 }
-            }) as HandlerFunctionType,
+            }) as RouteHandlerFunc,
         ],
         method: 'post',
         path: '/api/v1/users/new',
@@ -31,6 +32,7 @@ export const userRoutes = [
     {
         handler: [
             authUserCheck,
+            // eslint-disable-next-line
             (async (req: Request, res: Response, next: NextFunction) => {
                 const response: AuthUserRequestType = await authenticateUser(
                     req.body,
@@ -39,33 +41,35 @@ export const userRoutes = [
                     const { status, ...responseWithoutStatus } = response;
                     res.status(status).json(responseWithoutStatus);
                 }
-            }) as HandlerFunctionType,
+            }) as RouteHandlerFunc,
         ],
         method: 'post',
         path: '/api/v1/users/authenticate',
     },
     {
         handler: [
+            // eslint-disable-next-line
             (async (req: Request, res: Response, next: NextFunction) => {
                 const response: GetAllUsersRequestType = await getAllUsers();
                 if (!!response) {
                     const { status, ...responseWithoutStatus } = response;
                     res.status(status).json(responseWithoutStatus);
                 }
-            }) as HandlerFunctionType,
+            }) as RouteHandlerFunc,
         ],
         method: 'get',
         path: '/api/v1/users',
     },
     {
         handler: [
+            // eslint-disable-next-line
             (async (req: Request, res: Response, next: NextFunction) => {
                 const response = await getUser({ _id: req.params.id });
                 if (!!response) {
                     const { status, ...responseWithoutStatus } = response;
                     res.status(status).json(responseWithoutStatus);
                 }
-            }) as HandlerFunctionType,
+            }) as RouteHandlerFunc,
         ],
         method: 'get',
         path: '/api/v1/users/:id',

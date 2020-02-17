@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { HTTP400Error } from '../../utils/httpErrors/HTTP400Error';
-import { HandlerFunctionType } from '../../types/middleware';
+import { RouteHandlerFunc } from '../../types/middleware';
 
-export const newUserCheck: HandlerFunctionType = (
+export const newUserCheck: RouteHandlerFunc = (
     req: Request,
     res: Response,
     next: NextFunction,
@@ -34,7 +34,7 @@ export const newUserCheck: HandlerFunctionType = (
     }
 };
 
-export const authUserCheck: HandlerFunctionType = (
+export const authUserCheck: RouteHandlerFunc = (
     req: Request,
     res: Response,
     next: NextFunction,

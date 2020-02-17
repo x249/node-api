@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction, Router } from 'express';
 
-export type MiddlewareMainType = (router: Router) => void;
-export type HandlerFunctionType = (
+export type RouterMiddleware = (router: Router) => void;
+export type RouteHandlerFunc = (
     req: Request,
     res: Response,
     next: NextFunction,

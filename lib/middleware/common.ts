@@ -6,17 +6,17 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import limiter from 'express-rate-limit';
 import { jwt } from './jwt';
-import { MiddlewareMainType } from '../types/middleware';
+import { RouterMiddleware } from '../types/middleware';
 
 /*
  ** Middlewares
  */
 
-export const handleJWTAuthorization: MiddlewareMainType = (router: Router) => {
+export const handleJWTAuthorization: RouterMiddleware = (router: Router) => {
     router.use(jwt());
 };
 
-export const handleCors: MiddlewareMainType = (router: Router) => {
+export const handleCors: RouterMiddleware = (router: Router) => {
     router.use(
         cors({
             credentials: true,
@@ -25,12 +25,12 @@ export const handleCors: MiddlewareMainType = (router: Router) => {
     );
 };
 
-export const handleBodyParsing: MiddlewareMainType = (router: Router) => {
+export const handleBodyParsing: RouterMiddleware = (router: Router) => {
     router.use(bodyParser.urlencoded({ extended: true }));
     router.use(bodyParser.json());
 };
 
-export const handleCompression: MiddlewareMainType = (router: Router) => {
+export const handleCompression: RouterMiddleware = (router: Router) => {
     router.use(
         compression({
             filter: (req: Request, res: Response) => {
@@ -45,12 +45,12 @@ export const handleCompression: MiddlewareMainType = (router: Router) => {
     );
 };
 
-export const handleLogger: MiddlewareMainType = (router: Router) => {
+export const handleLogger: RouterMiddleware = (router: Router) => {
     const mode = process.env.NODE_ENV === 'development' ? 'dev' : 'combined';
     router.use(morgan(mode));
 };
 
-export const handleHelmet: MiddlewareMainType = (router: Router) => {
+export const handleHelmet: RouterMiddleware = (router: Router) => {
     const maxAge = 30;
     router.use(helmet()); // sane defaults
     router.use(
@@ -88,7 +88,7 @@ export const handleHelmet: MiddlewareMainType = (router: Router) => {
     router.use(helmet.xssFilter({ setOnOldIE: true }));
 };
 
-export const handleRateLimit: MiddlewareMainType = (router: Router) => {
+export const handleRateLimit: RouterMiddleware = (router: Router) => {
     const seconds = 60;
     const minutes = 15;
     const windowMs = minutes * seconds; // 15 minutes
