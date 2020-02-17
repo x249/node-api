@@ -36,7 +36,7 @@ export const clientError: ErrorHandlerType = (
 
 export const serverError: ErrorHandlerType = (
     err: Error,
-    res: Response,
+    res: Response, // eslint-disable-next-line
     next: NextFunction,
 ) => {
     console.error(err);
