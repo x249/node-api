@@ -1,4 +1,4 @@
 apps:
-  - script: ./dist/app.js
+  - script: ./dist/lib/app.js
     instances: max
     exec_mode: cluster
